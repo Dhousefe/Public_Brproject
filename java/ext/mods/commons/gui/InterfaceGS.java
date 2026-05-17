@@ -215,7 +215,7 @@ public class InterfaceGS {
         mnBalance.add(createMenuItem("Damage", 13, e -> new DamageBalanceFrame().setVisible(true))); 
         mnBalance.add(createMenuItem("Defence", 13, e -> new DefenceBalanceFrame().setVisible(true))); 
         mnBalance.add(createMenuItem("Vulnerability", 13, e -> new VulnerabilityBalanceFrame().setVisible(true))); 
-        mnBalance.add(createMenuItem("Monsters Moviment", 13, e -> new InterfaceMovementTuner().setVisible(true)));
+        //mnBalance.add(createMenuItem("Monsters Moviment", 13, e -> new InterfaceMovementTuner().setVisible(true)));
         
         final JMenu mnAnnounce = createMenu("Announce", 13); 
         mnAnnounce.add(createMenuItem("Normal", 13, e -> ServerActions.normalAnnounce(frame))); 

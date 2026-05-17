@@ -6,15 +6,19 @@ title Brproject - Build
 :menu
 cls
 echo.
-echo   ========================================
-echo      Brproject - Build
+echo   ========================================================================================================
+echo                                          Brproject - Build
 echo.
-echo [1] Compila incrementalmente os arquivos de codigo Java e Kotlin de forma rapida.
-echo [2] Exclui todos os artefatos de compilacao anteriores, em seguida, realiza uma compilacao completa.
-echo [3] Esta e uma acao composta que automatiza o ciclo completo para iniciar o servidor de desenvolvimento
-echo   ========================================
+echo   [1] Compila incrementalmente os arquivos de codigo Java e Kotlin de forma rapida.
+echo   [2] Exclui todos os artefatos de compilacao anteriores, em seguida, realiza uma compilacao completa.
+echo   [3] Esta e uma acao composta que automatiza o ciclo completo para iniciar o servidor de desenvolvimento
+echo       Para usar a opcao 3 verificar se o Ant esta devidamente instalado e configurado em variaveis de SO
 echo.
-echo   [1] Compilar normal (Java + Kotlin)
+echo   ========================================================================================================
+echo.
+echo.
+echo.
+echo   [1] Compilar normal (Rapido)
 echo   [2] Clean + Compilar normal
 echo   [3] Mount: Mount e Teste
 echo   [0] Sair

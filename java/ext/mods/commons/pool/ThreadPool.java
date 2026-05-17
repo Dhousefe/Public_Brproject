@@ -80,6 +80,39 @@ public final class ThreadPool
 	}
 
 	/**
+     * Executa uma tarefa de I/O (banco de dados, rede, leitura de arquivo).
+     * Delega para o CoroutinePool.executeIO() que utiliza Virtual Threads.
+     * Ideal para evitar bloqueio nas threads de jogo principais (Game/AI).
+     * 
+     * @param r a tarefa de I/O a ser executada
+     */
+    public static void executeIO(Runnable r)
+    {
+        CoroutinePool.executeIO(r);
+    }
+    
+    /**
+     * Agenda uma tarefa de I/O para execução futura.
+     * Como o schedule original usa threads físicas, delegamos o agendamento
+     * e forçamos a execução real da tarefa dentro de uma Virtual Thread de I/O.
+     * 
+     * @param r a tarefa de I/O a ser agendada
+     * @param delay o delay em milissegundos
+     * @return ScheduledFuture ou null se houve erro
+     */
+    public static ScheduledFuture<?> scheduleIO(Runnable r, long delay)
+    {
+        try
+        {
+            return CoroutinePool.schedule(() -> executeIO(r), delay);
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+	/**
 	 * Agenda uma tarefa para execução periódica (delega para CoroutinePool.scheduleAtFixedRate()).
 	 * @param r a tarefa a ser agendada
 	 * @param delay o delay inicial em milissegundos

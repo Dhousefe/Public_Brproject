@@ -68,23 +68,30 @@ public class ClanHallFunction
 	private long _endDate;
 	
 	public ClanHallFunction(ClanHall ch, int type, int lvl, int fee, long rate, long endDate)
-	{
-		_ch = ch;
-		_type = type;
-		_lvl = lvl;
-		_fee = fee;
-		_rate = rate;
-		_endDate = endDate;
-		
-		if (_ch.isFree())
-			return;
-		
-		final long currentTime = System.currentTimeMillis();
-		if (_endDate > currentTime)
-			_feeTask = ThreadPool.schedule(this::payFunctionFee, _endDate - currentTime);
-		else
-			ThreadPool.execute(this::payFunctionFee);
-	}
+    {
+        _ch = ch;
+        _type = type;
+        _lvl = lvl;
+        _fee = fee;
+        _rate = rate;
+        _endDate = endDate;
+        
+        if (_ch.isFree())
+            return;
+            
+        // PROTEÇÃO
+        if (_rate <= 0)
+        {
+            LOGGER.warn("ClanHall: Hall ID " + _ch.getId() + " has an invalid rate (" + _rate + "ms) for function type " + _type + ". Task cancelled to prevent DB spam.");
+            return;
+        }
+        
+        final long currentTime = System.currentTimeMillis();
+        if (_endDate > currentTime)
+            _feeTask = ThreadPool.scheduleIO(this::payFunctionFee, _endDate - currentTime);
+        else
+            ThreadPool.executeIO(this::payFunctionFee);
+    }
 	
 	public int getType()
 	{
@@ -203,17 +210,21 @@ public class ClanHallFunction
 	 * @param lvl : The new level of the ClanHallFunction.
 	 */
 	public void refreshFunction(int fee, int lvl)
-	{
-		stopFeeTask();
-		
-		_fee = fee;
-		_lvl = lvl;
-		refreshEndTime();
-		
-		dbSave();
-		
-		_feeTask = ThreadPool.schedule(this::payFunctionFee, getRate());
-	}
+    {
+        stopFeeTask();
+        
+        _fee = fee;
+        _lvl = lvl;
+        refreshEndTime();
+        
+        dbSave();
+        
+        // PROTEÇÃO
+        if (_rate > 0)
+        {
+            _feeTask = ThreadPool.scheduleIO(this::payFunctionFee, getRate());
+        }
+    }
 	
 	/**
 	 * Checks clan warehouse content, then remove this {@link ClanHallFunction} if the fee can't be paid.<br>
@@ -225,6 +236,13 @@ public class ClanHallFunction
 		if (_ch.isFree())
 			return;
 		
+		if (getRate() < 60000)
+			{
+				LOGGER.warn("ClanHall: Hall ID " + _ch.getId() + " function type " + _type + " has extremely low rate (" + getRate() + "ms). Removing function to stop DB spam.");
+				removeFunction();
+				return;
+			}
+
 		final Clan clan = ClanTable.getInstance().getClan(_ch.getOwnerId());
 		if (clan != null && clan.getWarehouse().getAdena() >= _fee)
 		{
@@ -234,7 +252,7 @@ public class ClanHallFunction
 			
 			dbSave();
 			
-			_feeTask = ThreadPool.schedule(this::payFunctionFee, getRate());
+			_feeTask = ThreadPool.scheduleIO(this::payFunctionFee, getRate());
 		}
 		else
 			removeFunction();
