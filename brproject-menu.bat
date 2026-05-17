@@ -8,11 +8,15 @@ cls
 echo.
 echo   ========================================
 echo      Brproject - Build
+echo.
+echo [1] Compila incrementalmente os arquivos de codigo Java e Kotlin de forma rapida.
+echo [2] Exclui todos os artefatos de compilacao anteriores, em seguida, realiza uma compilacao completa.
+echo [3] Esta e uma acao composta que automatiza o ciclo completo para iniciar o servidor de desenvolvimento
 echo   ========================================
 echo.
 echo   [1] Compilar normal (Java + Kotlin)
 echo   [2] Clean + Compilar normal
-echo   [3] Ant: Mount.xml dist-test
+echo   [3] Mount: Mount e Teste
 echo   [0] Sair
 echo.
 rem choice: teclas 1, 2, 3, 0  -  ERRORLEVEL 1..4 (testar do maior para o menor)
