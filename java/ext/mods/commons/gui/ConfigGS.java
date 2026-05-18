@@ -81,25 +81,25 @@ public class ConfigGS {
     private record ModFileConfig(String label, Path path, String key) {}
 
     private static final List<ModFileConfig> MODS_CONFIG_MAP = List.of(
-        new ModFileConfig("Agathions", Paths.get("game", "data", "custom", "mods", "agathionList.xml"), "enabled"),
+        //new ModFileConfig("Agathions", Paths.get("game", "data", "custom", "mods", "agathionList.xml"), "enabled"),
         new ModFileConfig("Announce Boss HP %", Paths.get("game", "data", "custom", "mods", "bossHpAnnounce.xml"), "enabled"),
         new ModFileConfig("Announce Raid Drop", Paths.get("game", "data", "custom", "mods", "raid_drop_announce.xml"), "enabled"),
-        new ModFileConfig("Battle Boss Event", Paths.get("game", "data", "custom", "mods", "battleboss.xml"), "<enabled>"),
+        new ModFileConfig("Battle Boss Event", Paths.get("game", "data", "custom", "mods", "battleboss.xml"), "enabled"),
         new ModFileConfig("Capsule Box", Paths.get("game", "data", "xml", "CapsuleBox.xml"), "enabled"),
-        new ModFileConfig("Dress Me", Paths.get("game", "data", "custom", "mods", "DressMeData.xml"), "enabled"),
-        new ModFileConfig("Dungeons Event", Paths.get("game", "data", "custom", "mods", "dungeon_event.xml"), "enabled"),
+        //new ModFileConfig("Dress Me", Paths.get("game", "data", "custom", "mods", "DressMeData.xml"), "enabled"),
+        //new ModFileConfig("Dungeons Event", Paths.get("game", "data", "custom", "mods", "dungeon_event.xml"), "enabled"),
         new ModFileConfig("Equips Grade Restrictions", Paths.get("game", "data", "custom", "mods", "equip_grade_restrictions.xml"), "enabled"),
         new ModFileConfig("Global Drop", Paths.get("game", "data", "custom", "mods", "global_drop.xml"), "enable"),
-        new ModFileConfig("Kamaloka Dungeon", Paths.get("game", "data", "custom", "mods", "kamaloka_dungeon.xml"), "enabled"),
-        new ModFileConfig("Missions Mode", Paths.get("game", "data", "custom", "mods", "missions.xml"), "enabled"),
+        //new ModFileConfig("Kamaloka Dungeon", Paths.get("game", "data", "custom", "mods", "kamaloka_dungeon.xml"), "enabled"),
+        //new ModFileConfig("Missions Mode", Paths.get("game", "data", "custom", "mods", "missions.xml"), "enabled"),
         new ModFileConfig("Olly Restrictions Mode", Paths.get("game", "data", "custom", "mods", "olympiad_enchant_config.xml"), "enabled"),
-        new ModFileConfig("PC Cafe", Paths.get("game", "data", "custom", "mods", "pcCafe.xml"), "enabled"),
+        //new ModFileConfig("PC Cafe", Paths.get("game", "data", "custom", "mods", "pcCafe.xml"), "enabled"),
         new ModFileConfig("Player God Mode", Paths.get("game", "data", "custom", "mods", "PlayerGOD.xml"), "enabled"),
         new ModFileConfig("PVP Colors Sistem", Paths.get("game", "data", "custom", "mods", "pvpSystem.xml"), "enabled"),
-        new ModFileConfig("Quets Customs Mode", Paths.get("game", "data", "custom", "mods", "quests.xml"), "enabled"),
+        //new ModFileConfig("Quets Customs Mode", Paths.get("game", "data", "custom", "mods", "quests.xml"), "enabled"),
         new ModFileConfig("Random Farm Zone", Paths.get("game", "data", "custom", "mods", "random_event.xml"), "enable"),
-        new ModFileConfig("Rates Settings", Paths.get("game", "data", "custom", "mods", "rates.xml"), "enabled"),
-        new ModFileConfig("Roullete", Paths.get("game", "data", "custom", "mods", "roulette.xml"), "enabled"),
+        //new ModFileConfig("Rates Settings", Paths.get("game", "data", "custom", "mods", "rates.xml"), "enabled"),
+        //new ModFileConfig("Roullete", Paths.get("game", "data", "custom", "mods", "roulette.xml"), "enabled"),
         new ModFileConfig("Sell Buff Mode", Paths.get("game", "config", "mods.properties"), "BuffShopEnabled"),
         new ModFileConfig("Summon Mob Item", Paths.get("game", "data", "custom", "mods", "SummonMobItem.xml"), "enabled"),
         new ModFileConfig("Tournament Event Mode", Paths.get("game", "data", "custom", "mods", "tourBattle.xml"), "enabled")
@@ -446,6 +446,16 @@ public class ConfigGS {
             if (matcher.find()) {
                 return matcher.group(1).trim();
             }
+            
+            if (isXml) {
+                final Pattern elementPattern = Pattern.compile(
+                    "<\\s*" + Pattern.quote(key) + "\\s*>\\s*([^<]+?)\\s*<\\s*/\\s*" + Pattern.quote(key) + "\\s*>",
+                    Pattern.CASE_INSENSITIVE);
+                final Matcher elementMatcher = elementPattern.matcher(content);
+                if (elementMatcher.find()) {
+                    return elementMatcher.group(1).trim();
+                }
+            }
 
             return "false";
 
@@ -494,6 +504,21 @@ public class ConfigGS {
                 }
                 newLines.add(key + " = " + newValue);
                 valueReplaced = true;
+            }
+            
+            if (!valueReplaced && isXml) {
+                final String content = Files.readString(configFile, StandardCharsets.UTF_8);
+                final Pattern elementPattern = Pattern.compile(
+                    "(<\\s*" + Pattern.quote(key) + "\\s*>\\s*)([^<]*?)(<\\s*/\\s*" + Pattern.quote(key) + "\\s*>)",
+                    Pattern.CASE_INSENSITIVE);
+                final Matcher elementMatcher = elementPattern.matcher(content);
+                if (elementMatcher.find()) {
+                    final String updated = elementMatcher.replaceAll("$1" + Matcher.quoteReplacement(newValue) + "$3");
+                    Files.writeString(configFile, updated, StandardCharsets.UTF_8,
+                        StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    System.out.println("Arquivo " + configFile.getFileName() + " salvo com sucesso (" + key + " elemento XML).");
+                    return true;
+                }
             }
 
             if (valueReplaced) {
