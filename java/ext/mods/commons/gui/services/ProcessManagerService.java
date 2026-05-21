@@ -82,7 +82,7 @@ public class ProcessManagerService {
             return;
         }
 
-        StringBuilder cp = new StringBuilder();
+        /*StringBuilder cp = new StringBuilder();
         String sep = File.separator;
         cp.append(".").append(File.pathSeparator);
         try
@@ -97,7 +97,22 @@ public class ProcessManagerService {
         }
         cp.append(File.pathSeparator).append("..").append(sep).append("bin"); 
         cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes");
-        cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes").append(sep).append("java").append(sep).append("main");
+        cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes").append(sep).append("java").append(sep).append("main");*/
+
+        // --- INÍCIO DA CORREÇÃO DO CLASSPATH PARA APPCDS ---
+        String cpString = "";
+        try {
+            final File libsDir = new File(diretorioExecucao, "../libs").getCanonicalFile();
+            // JvmOptimizer já retorna a string perfeita só com os .jars organizados
+            cpString = JvmOptimizer.buildRuntimeClasspath(libsDir); 
+        } catch (Exception e) {
+            System.err.println("[AVISO] Classpath ordenado falhou, usando libs/*: " + e.getMessage());
+            // Se cair aqui, o AppCDS vai falhar de qualquer jeito por causa do asterisco, 
+            // mas o servidor ainda liga sem cache.
+            cpString = ".." + File.separator + "libs" + File.separator + "*"; 
+        }
+        // NOTA: Removemos os appends de ".", "bin" e "build/classes". 
+        
 
         String mainClass = tipo.equals("gameserver") ? "ext.mods.gameserver.GameServer" : "ext.mods.loginserver.LoginServer";
 
@@ -132,7 +147,7 @@ public class ProcessManagerService {
         // --- FIM DAS FLAGS OTIMIZADAS ---
 
         command.add("-cp");
-        command.add(cp.toString());
+        command.add(cpString);
         command.add(mainClass);
         
         if (tipo.equals("gameserver")) {
