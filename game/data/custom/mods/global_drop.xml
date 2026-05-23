@@ -2,7 +2,7 @@
 <list>
     <config 
         enable="true" 
-        DropsOriginals="false"
+        DropsOriginals="true"
         minLevel="70"
         maxLevel="80"
         UseServerRates="true"

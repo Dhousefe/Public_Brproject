@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><ramdoms>
 	<event>
 		<configs>
-			<config announceEnd="5" days="0,1,2,3,4,5,6" enable="true" intervalHours="1" name="[Farm Event]" prepareMinutes="1" select="1" times="03:27"/>
+			<config announceEnd="5" days="0,1,2,3,4,5,6" enable="true" intervalHours="1" name="[Farm Event]" prepareMinutes="1" select="1" times="1:50"/>
 		</configs>
 		<messages>
 			<message onPrepare="O [Farm Event] começará em %time%. Preparem-se!"/>
@@ -15,7 +15,7 @@
 		
 		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="false" active="false" drops="57-2000-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.0" rateSp="1.5" rateXp="1.5" respawnDelay="30" title="[Farm Zone 1]" useOriginals="true" zoneId="1"/>
 		        
-		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="false" active="false" drops="57-1500-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="1.5" rateSp="1.2" rateXp="1.2" respawnDelay="45" title="[Farm Zone 2]" useOriginals="true" zoneId="2"/>
+		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="false" active="true" drops="57-1500-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="1.5" rateSp="1.2" rateXp="1.2" respawnDelay="45" title="[Farm Zone 2]" useOriginals="true" zoneId="2"/>
 		        
 		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="false" active="false" drops="57-3000-100;4037-1-5" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.0" rateSp="2.0" rateXp="2.0" respawnDelay="40" title="[Farm Zone 3]" useOriginals="true" zoneId="3"/>
 		
@@ -31,8 +31,8 @@
 		        
 		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="false" active="false" drops="57-2000-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.0" rateSp="1.5" rateXp="1.5" respawnDelay="30" title="[Farm Zone 9]" useOriginals="true" zoneId="9"/>
 		        
-		<spawns DWARVEN_Only="true" DropsOriginals="true" Enchanter_Zone="false" active="true" drops="57-2000-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.0" rateSp="1.5" rateXp="1.5" respawnDelay="30" title="[Farm Zone DWARVEN]" useOriginals="true" zoneId="10"/>
+		<spawns DWARVEN_Only="true" DropsOriginals="true" Enchanter_Zone="false" active="false" drops="57-2000-100" enchantChance="0.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.0" rateSp="1.5" rateXp="1.5" respawnDelay="30" title="[Farm Zone DWARVEN]" useOriginals="true" zoneId="10"/>
 		
-		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="true" active="false" drops="57-2500-100" enchantChance="25.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.5" rateSp="1.8" rateXp="1.8" respawnDelay="30" spawnLocation="119997,-76391,-3268" title="[Enchanter Zone]" useOriginals="true" zoneId="11"/>		
+		<spawns DWARVEN_Only="false" DropsOriginals="true" Enchanter_Zone="true" active="true" drops="57-2500-100" enchantChance="25.0" isPartyZone="false" isVip="false" maxEnchant="15" minPartySize="2" rateAdena="2.5" rateSp="1.8" rateXp="1.8" respawnDelay="30" spawnLocation="119997,-76391,-3268" title="[Enchanter Zone]" useOriginals="true" zoneId="11"/>		
 	</event>
 </ramdoms>

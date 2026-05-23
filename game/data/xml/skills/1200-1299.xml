@@ -2197,13 +2197,13 @@
 		<set name="hitTime" val="4000"/>
 		<set name="skillType" val="SEED"/>
 		<set name="isMagic" val="true"/>
-		<set name="reuseDelay" val="3600000"/>
+		<set name="reuseDelay" val="400000"/>
 		<set name="operateType" val="ACTIVE"/>
 		<set name="castRange" val="600"/>
 		<set name="effectRange" val="1100"/>
 		<set name="aggroPoints" val="100"/>
 		<for>
-			<effect name="Seed" time="5" val="0" />
+			<effect name="Seed" time="65" val="0" />
 		</for>
 	</skill>
 	<skill id="1286" levels="1" name="Seed of Water" >
@@ -2214,13 +2214,13 @@
 		<set name="hitTime" val="4000"/>
 		<set name="skillType" val="SEED"/>
 		<set name="isMagic" val="true"/>
-		<set name="reuseDelay" val="3600000"/>
+		<set name="reuseDelay" val="400000"/>
 		<set name="operateType" val="ACTIVE"/>
 		<set name="castRange" val="600"/>
 		<set name="effectRange" val="1100"/>
 		<set name="aggroPoints" val="100"/>
 		<for>
-			<effect name="Seed" time="5" val="0"/>
+			<effect name="Seed" time="65" val="0"/>
 		</for>
 	</skill>
 	<skill id="1287" levels="1" name="Seed of Wind" >
@@ -2231,13 +2231,13 @@
 		<set name="hitTime" val="4000"/>
 		<set name="skillType" val="SEED"/>
 		<set name="isMagic" val="true"/>
-		<set name="reuseDelay" val="3600000"/>
+		<set name="reuseDelay" val="400000"/>
 		<set name="operateType" val="ACTIVE"/>
 		<set name="castRange" val="600"/>
 		<set name="effectRange" val="1100"/>
 		<set name="aggroPoints" val="100"/>
 		<for>
-			<effect name="Seed" time="5" val="0"/>
+			<effect name="Seed" time="65" val="0"/>
 		</for>
 	</skill>
 	<skill id="1288" levels="1" name="Aura Symphony" >

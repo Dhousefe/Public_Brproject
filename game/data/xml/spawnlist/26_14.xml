@@ -16,7 +16,7 @@ Goddard Area
 		<ai type="default_use_db_maker">
 				<set name="maker_name" val="valakascuve_2614"/>
 		</ai>
-		<npc id="29028" pos="-105200;-253104;-15264;0" total="1" respawn="264hour" respawnRand="72hour" dbName="valakas"/>
+		<npc id="29028" pos="212998;-114564;-1631;0" total="1" respawn="264hour" respawnRand="72hour" dbName="valakas"/>
 	</npcmaker>
 	
 	<!--  -->

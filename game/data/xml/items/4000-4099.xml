@@ -309,6 +309,7 @@
 		<set name="icon" val="icon.etc_coins_gold_i00" />
 		<set name="material" val="PAPER" />
 		<set name="price" val="1" />
+		<set name="handler" val="ItemLevelDelevel" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />

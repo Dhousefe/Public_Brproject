@@ -1,69 +1,69 @@
 <?xml version='1.0' encoding='utf-8'?>
 <list>
 	<items id="9262">
-		<agathion NpcId="41000" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41000" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9263">
-		<agathion NpcId="41001" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41001" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9264">
-		<agathion NpcId="41002" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41002" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9265">
-		<agathion NpcId="41003" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41003" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9266">
-		<agathion NpcId="41004" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41004" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9267">
-		<agathion NpcId="41005" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41005" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9268">
-		<agathion NpcId="41006" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41006" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9269">
-		<agathion NpcId="41007" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41007" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9270">
-		<agathion NpcId="41008" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41008" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9271">
-		<agathion NpcId="41009" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41009" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9272">
-		<agathion NpcId="41010" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41010" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9273">
-		<agathion NpcId="41011" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41011" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9274">
-		<agathion NpcId="41012" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41012" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9275">
-		<agathion NpcId="41013" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41013" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9276">
-		<agathion NpcId="41014" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="41014" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9575">
-		<agathion NpcId="99990" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99990" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9576">
-		<agathion NpcId="99991" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99991" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9577">
-		<agathion NpcId="99992" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99992" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9578">
-		<agathion NpcId="99993" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99993" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9579">
-		<agathion NpcId="99994" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99994" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9580">
-		<agathion NpcId="99995" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99995" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 	<items id="9581">
-		<agathion NpcId="99996" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="2" />
+		<agathion NpcId="99996" runSpeed="true" healAmount="500" healDelay="10" randomAnimDelay="45" followDelay="0" />
 	</items>
 </list>

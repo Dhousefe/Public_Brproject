@@ -70,4 +70,184 @@
   <visualWep type="POLE" rhand="6621" lhand="0" lrhand="6621" />
   <visualEffect skillId="10005" level="1" recurring="false" />
 </dress>
+
+ <dress skillId="9230" name="Skin: Dark Assassin" type="ARMOR" isVip="true">
+    <visualSet chest="9842" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="600" level="1" recurring="false" interval="35" />
+</dress>
+ 
+<dress skillId="9219" name="Green Adidas" type="ARMOR" isVip="true">
+    <visualSet chest="9876" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="445" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9220" name="Red Adidas" type="ARMOR" isVip="true">
+    <visualSet chest="9875" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="447" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9221" name="Yellow Adidas" type="ARMOR" isVip="true">
+    <visualSet chest="9874" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="448" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9222" name="Black Adidas" type="ARMOR" isVip="true">
+    <visualSet chest="9873" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="449" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9227" name="Skin: Archer" type="ARMOR" isVip="true">
+    <visualSet chest="9839" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9228" name="Skin: Green Archer" type="ARMOR" isVip="true">
+    <visualSet chest="9840" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9229" name="Skin: Light Assassin" type="ARMOR" isVip="true">
+    <visualSet chest="9841" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9231" name="Skin: Red Musketeer" type="ARMOR" isVip="true">
+    <visualSet chest="9843" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9232" name="Skin: Muskeeter" type="ARMOR" isVip="true">
+    <visualSet chest="9844" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9233" name="Skin: Wizard" type="ARMOR" isVip="true">
+    <visualSet chest="9845" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9234" name="Skin: Warrior" type="ARMOR" isVip="true">
+    <visualSet chest="9846" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9235" name="Skin: Cat" type="ARMOR" isVip="true">
+    <visualSet chest="9847" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9236" name="Skin: King" type="ARMOR" isVip="true">
+    <visualSet chest="9848" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9237" name="Skin: White King" type="ARMOR" isVip="true">
+    <visualSet chest="9849" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9238" name="Skin: Valkyri" type="ARMOR" isVip="true">
+    <visualSet chest="9850" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9239" name="Skin: Anakim" type="ARMOR" isVip="true">
+    <visualSet chest="9851" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9240" name="Skin: Pirate" type="ARMOR" isVip="true">
+    <visualSet chest="9852" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9241" name="Skin: Pirate Blue" type="ARMOR" isVip="true">
+    <visualSet chest="9853" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9242" name="Skin: Ninja" type="ARMOR" isVip="true">
+    <visualSet chest="9854" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9243" name="Skin: Samurai" type="ARMOR" isVip="true">
+    <visualSet chest="9855" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9244" name="Skin: Dark Wizard" type="ARMOR" isVip="true">
+    <visualSet chest="9856" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9245" name="Skin: Vampire" type="ARMOR" isVip="true">
+    <visualSet chest="9857" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9246" name="Skin: Beleth" type="ARMOR" isVip="true">
+    <visualSet chest="9858" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9247" name="Skin: Cyborg" type="ARMOR" isVip="true">
+    <visualSet chest="9859" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9248" name="Skin: Cowboy" type="ARMOR" isVip="true">
+    <visualSet chest="9860" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9249" name="Skin: Barbarian" type="ARMOR" isVip="true">
+    <visualSet chest="9861" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9250" name="Skin: Dragon" type="ARMOR" isVip="true">
+    <visualSet chest="9862" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9251" name="Skin: White Knight" type="ARMOR" isVip="true">
+    <visualSet chest="9863" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9252" name="Skin: Red Santa" type="ARMOR" isVip="true">
+    <visualSet chest="9864" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9253" name="Skin: Blue Santa" type="ARMOR" isVip="true">
+    <visualSet chest="9865" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9254" name="Skin: Dark Knight" type="ARMOR" isVip="true">
+    <visualSet chest="9866" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9255" name="Skin: Healer" type="ARMOR" isVip="true">
+    <visualSet chest="9867" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9256" name="Skin: Lilith" type="ARMOR" isVip="true">
+    <visualSet chest="9868" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9259" name="Skin: Pancake" type="ARMOR" isVip="true">
+    <visualSet chest="9871" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
+
+<dress skillId="9260" name="Skin: Ice Man Cake" type="ARMOR" isVip="true">
+    <visualSet chest="9872" legs="0" gloves="0" feet="0" helmet="0" cloak="0" />
+    <visualEffect skillId="453" level="1" recurring="false" interval="35" />
+</dress>
 </dressMeList>

@@ -23,19 +23,19 @@
 -->
 <list>
         
-     <!-- Summon Scroll - Solina Brother -->
+     <!-- Summon Scroll - Axion -->
      <summon_item>
          <itemId>15023</itemId>
-         <monsterId>55022</monsterId>
-         <monsterName>Solina Brother</monsterName>
+         <monsterId>55030</monsterId>
+         <monsterName>Astair Axion</monsterName>
          <enabled>true</enabled>
          <maxUsesPerDay>5</maxUsesPerDay>
          <cooldownMinutes>1</cooldownMinutes>
          <requiredClass></requiredClass>
-         <description>Summons an Solina Brother with summon animation (All classes)</description>
+         <description>Summons an Axion with summon animation (All classes)</description>
      </summon_item>
     
-     <!-- Summon Scroll - Lord of Splendor Anays  -->
+     <!-- Summon Scroll - Uruka with epic  -->
      <summon_item>
          <itemId>15024</itemId>
          <monsterId>55024</monsterId>
@@ -47,15 +47,15 @@
          <description>Summons a powerful Uruka with epic animation</description>
      </summon_item>
     
-     <!-- Summon Scroll - found -->
+     <!-- Summon Scroll - Lord of Splendor -->
      <summon_item>
          <itemId>15025</itemId>
          <monsterId>55023</monsterId>
-         <monsterName>Found</monsterName>
+         <monsterName>Lord of Splendor</monsterName>
          <enabled>true</enabled>
          <maxUsesPerDay>5</maxUsesPerDay>
          <cooldownMinutes>1</cooldownMinutes>
          <requiredClass></requiredClass>
-         <description>Summons a found with normal animation (All classes)</description>
+         <description>Summons a Lord of Splendor Anays with normal animation (All classes)</description>
      </summon_item>
 </list>

@@ -1,58 +1,164 @@
-<?xml version="1.0" encoding="utf-8"?>
-<CapsuleBox>
-   <capsuled_items ID="15017"  PlayerLevel="1"> <!-- Box Standard -->
-       <item itemId="177" min="1" max="1" enchantLevel="0"  chance="100"/> 
-       <item itemId="1101" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="1104" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="908" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="3948" min="1" max="10" enchantLevel="0" chance="100"/> 
-   </capsuled_items>
-   <capsuled_items ID="15018"  PlayerLevel="1"> <!-- Box Premium -->
-       <item itemId="68" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="711" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="715" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="908" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="1463" min="1" max="5" enchantLevel="0" chance="100"/> 
-   </capsuled_items>
-   <capsuled_items ID="15019"  PlayerLevel="1"> <!-- Chest Standard -->
-       <item itemId="177" min="1" max="1" enchantLevel="0"  chance="100"/> 
-       <item itemId="1101" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="1104" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="908" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="3948" min="1" max="10" enchantLevel="0" chance="100"/> 
-   </capsuled_items>
-   <capsuled_items ID="15020"  PlayerLevel="1"> <!-- Chest Mid-tier -->
-       <item itemId="68" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="711" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="715" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="908" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="1463" min="1" max="5" enchantLevel="0" chance="100"/> 
-   </capsuled_items>
-   <capsuled_items ID="15021"  PlayerLevel="1"> <!-- Chest Rare -->
-       <item itemId="68" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="711" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="715" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="908" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="115" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="877" min="1" max="1" enchantLevel="0" chance="100"/> 
-       <item itemId="1463" min="1" max="5" enchantLevel="0" chance="100"/> 
-   </capsuled_items>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<CapsuleBox enabled="true">
+       
+    <capsuled_items ID="15017" PlayerLevel="1">
+         
+       
+        <item chance="100" enchantLevel="0" itemId="177" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1101" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1104" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="908" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="3948" max="10" min="1"/>
+         
+   
+    </capsuled_items>
+       
+    <capsuled_items ID="15018" PlayerLevel="1">
+         
+       
+        <item chance="100" enchantLevel="0" itemId="68" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="711" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="715" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="908" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1463" max="5" min="1"/>
+         
+   
+    </capsuled_items>
+       
+    <capsuled_items ID="15019" PlayerLevel="1">
+         
+       
+        <item chance="100" enchantLevel="0" itemId="177" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1101" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1104" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="908" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="3948" max="10" min="1"/>
+         
+   
+    </capsuled_items>
+       
+    <capsuled_items ID="15020" PlayerLevel="1">
+         
+       
+        <item chance="100" enchantLevel="0" itemId="68" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="711" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="715" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="908" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1463" max="5" min="1"/>
+         
+   
+    </capsuled_items>
+       
+    <capsuled_items ID="15021" PlayerLevel="1">
+         
+       
+        <item chance="100" enchantLevel="0" itemId="68" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="711" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="715" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="908" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="115" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="877" max="1" min="1"/>
+         
+       
+        <item chance="100" enchantLevel="0" itemId="1463" max="5" min="1"/>
+         
+   
+    </capsuled_items>
+    
 </CapsuleBox>

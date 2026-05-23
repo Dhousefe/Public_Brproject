@@ -1,172 +1,200 @@
 <html>
-<body>
-<br>
-<center>
-    <table width=270>
-        <tr>
-            <td width=70 align=center><font color="LEVEL">AUTO FARM</font></td>
-            <td width=100 align=center><font color="%status_color%"><a action="bypass autofarm change_status">%status%</a></font></td>
-            <td width=100 align=right><img src="L2UI_CH3.radar_target" width="16" height="16"> <img src="L2UI_CH3.radar_party" width="16" height="16"></td>
-        </tr>
-    </table>
-    
-    <img src="l2ui.SquareWhite" width="268" height="1">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ </head>
+ <body>
+  <br>
+  <center>
+   <table>
+    <tbody>
+     <tr>
+      <td></td>
+      <td width="70"><font color="LEVEL">AUTO FARM</font></td>
+      <td width="30"><font color="%status_color%"><a action="bypass autofarm change_status">%status%</a></font></td>
+      <td><img src="L2UI_CH3.radar_target" width="8" height="8"> <img src="L2UI_CH3.radar_party" width="8" height="8"></td>
+      <td></td>
+     </tr>
+    </tbody>
+   </table>
+   <img height="5">
+   <table>
+    <tbody>
+     <tr>
+      <td width="5"></td>
+      <td><img src="l2ui.SquareWhite" width="268" height="1"></td>
+     </tr>
+    </tbody>
+   </table>
+   <br>
+   <table>
+    <tbody>
+     <tr>
+      <td></td>
+      <td>
+       <button action="bypass -h autofarm index" width="14" height="16" back="L2UI_CH3.fishing_clockicon" fore="L2UI_CH3.fishing_clockicon">
+      </td>
+      <td></td>
+      <td width="90">
+	  Início: %start_time%
+	  </td>
+      <td width="130">
+	  Fim: %end_time% (+%remaining_time%)
+	  </td>
+     </tr>
+    </tbody>
+   </table>
+   %alert%
+   <button value="Options" action="bypass autofarm help options.htm" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2">
+    <img src="L2UI.SquareGray" width=250 height=1>
     <br>
-    
-    <table width=270 bgcolor="000000">
+    <table cellpadding=2>
         <tr>
-            <td align=center><font color="B09878">Status:</font> <font color="%autofarm_status_color%">%autofarm_status%</font></td>
-        </tr>
-    </table>
-    <table width=270>
-        <tr>
-            <td width=90 align=center><font color="AAAAAA">Usado:</font> <font color="LEVEL">%autofarm_time_used%</font></td>
-            <td width=90 align=center><font color="AAAAAA">Restante:</font> <font color="00FF00">%autofarm_time_remaining%</font></td>
-            <td width=90 align=center><font color="AAAAAA">Extra:</font> <font color="FFFF00">%autofarm_extra_time%</font></td>
-        </tr>
-    </table>
-    <br>
-
-    <table width=270>
-        <tr>
-            <td width=20 align=center>
-                <button action="bypass -h autofarm index" width="16" height="16" back="L2UI_CH3.fishing_clockicon" fore="L2UI_CH3.fishing_clockicon">
+            <td width=46>
+                Area
             </td>
-            <td width=110>Início: <font color="LEVEL">%start_time%</font></td>
-            <td width=140>Fim: <font color="LEVEL">%end_time%</font></td>
-        </tr>
-    </table>
-
-    %alert%
-
-    <button value="Opções da Área" action="bypass autofarm help options.htm" width=200 height=20 back="L2UI_ch3.bigbutton3_over" fore="L2UI_ch3.bigbutton3">
-    <img src="L2UI.SquareGray" width="250" height="1">
-    <br>
-    
-    <table width=270 cellpadding="0" cellspacing="0">
-        <tr>
-            <td width=135 align=center>
-                <table width=130>
-                    <tr>
-                        <td width=40>Área:</td>
-                        <td width=90><button value="%area%" action="bypass autofarm list_areas" width=85 height=20 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
-                    </tr>
-                </table>
+            <td>
+                <button value="%area%" action="bypass autofarm list_areas" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2">
             </td>
-            <td width=135 align=center>
-                <table width=130>
-                    <tr>
-                        <td width=40>Alvos:</td>
-                        <td width=90><button value="%targets%" action="bypass autofarm targets page 1" width=85 height=20 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
-                    </tr>
-                </table>
+            <td></td>
+            <td width=44>
+                Targets
             </td>
-        </tr>
-        <tr><td height=5></td></tr>
-        <tr>
-            <td width=135 align=center>
-                <table width=130>
-                    <tr>
-                        <td width=40>Tempo:</td>
-                        <td width=90><button value="%duration%" action="bypass autofarm timer" width=85 height=20 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
-                    </tr>
-                </table>
-            </td>
-            <td width=135 align=center>
-                <table width=130>
-                    <tr>
-                        <td width=40>Macro:</td>
-                        <td width=90><button value="%macro%" action="bypass autofarm macro" width=85 height=20 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2"></td>
-                    </tr>
-                </table>
+            <td>
+                <button value="%targets%" action="bypass autofarm targets page 1" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2">
             </td>
         </tr>
     </table>
-    
-    <br>
-    <img src="L2UI.SquareGray" width="250" height="1">
-    <br>
-
-    <table width=270>
+    <img height=2>
+    <table cellpadding=2>
         <tr>
-            <td width=20><button action="bypass autofarm toggle autopotion" width="15" height="15" back="L2UI.control.checkBox_%autopotion%" fore="L2UI.control.checkBox_%autopotion%"></td>
-            <td width=70>Potions</td>
-            
-            <td width=20><button action="bypass autofarm toggle attackraid" width="15" height="15" back="L2UI.control.checkBox_%attack_raid%" fore="L2UI.control.checkBox_%attack_raid%"></td>
-            <td width=70>RaidBoss</td>
-            
-            <td width=20><button action="bypass autofarm toggle pickup" width="15" height="15" back="L2UI.control.checkBox_%pickup%" fore="L2UI.control.checkBox_%pickup%"></td>
-            <td width=70>Drops</td>
-        </tr>
-        <tr>
-            <td width=20></td>
-            <td width=70></td>
-            
-            <td width=20><button action="bypass autofarm toggle attacksummon" width="15" height="15" back="L2UI.control.checkBox_%attack_summon%" fore="L2UI.control.checkBox_%attack_summon%"></td>
-            <td width=70>Summons</td>
-            
-            <td width=20><button action="bypass autofarm toggle spoilsweep" width="15" height="15" back="L2UI.control.checkBox_%spoilsweep%" fore="L2UI.control.checkBox_%spoilsweep%"></td>
-            <td width=70>Spoil</td>
-        </tr>
-        <tr>
-            <td width=20><button action="bypass autofarm toggle return" width="15" height="15" back="L2UI.control.checkBox_%return%" fore="L2UI.control.checkBox_%return%"></td>
-            <td width=70>Return</td>
-            <td colspan=4></td>
+            <td width=46>
+                Duration
+            </td>
+            <td>
+                <button value="%duration%" action="bypass autofarm timer" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2">
+            </td>
+            <td></td>
+            <td width=44>
+                Macro
+            </td>
+            <td>
+                <button value="%macro%" action="bypass autofarm macro" width=65 height=19 back="L2UI_ch3.smallbutton2_over" fore="L2UI_ch3.smallbutton2">
+            </td>
         </tr>
     </table>
-
     <br>
-    
-    <button value="Skills %optional%" action="bypass autofarm help skills.htm" width=100 height=20 back="L2UI_ch3.Btn1_normalOn" fore="L2UI_ch3.Btn1_normal">
-    <img src="L2UI.SquareGray" width="250" height="1">
-    <br>
-    
-    <table cellspacing=2 cellpadding=0>
+    <table>
         <tr>
             <td>
-                <table cellpadding="0" cellspacing="0">
+                <button action="bypass autofarm toggle autopotion" width=14 height=14 back=L2UI.control.checkBox_%autopotion% fore=L2UI.control.checkBox_%autopotion%>
+            </td>
+            <td width=63>
+                Auto Potion
+            </td>
+			
+            <td>
+                <button action="bypass autofarm toggle attackraid" width=14 height=14 back=L2UI.control.checkBox_%attack_raid% fore=L2UI.control.checkBox_%attack_raid%>
+            </td>
+            <td width=83>
+                Attack RaidBoss
+            </td>
+			
+            <td>
+                <button action="bypass autofarm toggle pickup" width=14 height=14 back=L2UI.control.checkBox_%pickup% fore=L2UI.control.checkBox_%pickup%>
+            </td>
+            <td width=35>
+                PickUp
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button action="bypass autofarm toggle attacksummon" width=14 height=14 back=L2UI.control.checkBox_%attack_summon% fore=L2UI.control.checkBox_%attack_summon%>
+            </td>
+            <td width=63>
+                Summon Atk
+            </td>
+            <td>
+                <button action="bypass autofarm toggle spoilsweep" width=14 height=14 back=L2UI.control.checkBox_%spoilsweep% fore=L2UI.control.checkBox_%spoilsweep%>
+            </td>
+            <td width=83>
+                Spoil & Sweep
+            </td>
+            <td></td>
+            <td width=35></td>
+        </tr>
+        <tr>
+            <td>
+                <button action="bypass autofarm toggle defensive" width=14 height=14 back=L2UI.control.checkBox_%defensive% fore=L2UI.control.checkBox_%defensive%>
+            </td>
+            <td width=63>
+                <font color="%def_color%">Defensive</font>
+            </td>
+            <td>
+                <button action="bypass autofarm toggle offensive" width=14 height=14 back=L2UI.control.checkBox_%offensive% fore=L2UI.control.checkBox_%offensive%>
+            </td>
+            <td width=83>
+                <font color="%off_color%">Offensive</font>
+            </td>
+            <td>
+                <button action="bypass autofarm toggle return" width=14 height=14 back=L2UI.control.checkBox_%return% fore=L2UI.control.checkBox_%return%>
+            </td>
+            <td width=63>
+                Return
+            </td>
+        </tr>
+        
+    </table>
+	<br>
+    <img src="L2UI.SquareGray" width=250 height=1>
+    <br>
+    <table>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <table cellpadding=3>
                     <tr>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%0">
-                            <button action="bypass autofarm skills page 1 0" width="%skill_width%0" height="%skill_height%0" back="%skill_icon%0" fore="%skill_icon%0">
-                            <img height="%2_negative_height%0"> 
-                            <img src="%bg_icon%0" width="%bg_width%0" height="%bg_height%0">
+                            <button action="bypass autofarm skills page 1 0" width=%skill_width%0 height=%skill_height%0 back="%skill_icon%0" fore="%skill_icon%0">
+                            <img height="%2_negative_height%0">
+                            <img src="%bg_icon%0" width=%bg_width%0 height=%bg_height%0>
                         </td>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%1">
-                            <button action="bypass autofarm skills page 1 1" width="%skill_width%1" height="%skill_height%1" back="%skill_icon%1" fore="%skill_icon%1">
-                            <img height="%2_negative_height%1"> 
-                            <img src="%bg_icon%1" width="%bg_width%1" height="%bg_height%1">
+                            <button action="bypass autofarm skills page 1 1" width=%skill_width%1 height=%skill_height%1 back="%skill_icon%1" fore="%skill_icon%1">
+                            <img height="%2_negative_height%1">
+                            <img src="%bg_icon%1" width=%bg_width%1 height=%bg_height%1>
                         </td>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%2">
-                            <button action="bypass autofarm skills page 1 2" width="%skill_width%2" height="%skill_height%2" back="%skill_icon%2" fore="%skill_icon%2">
-                            <img height="%2_negative_height%2"> 
-                            <img src="%bg_icon%2" width="%bg_width%2" height="%bg_height%2">
+                            <button action="bypass autofarm skills page 1 2" width=%skill_width%2 height=%skill_height%2 back="%skill_icon%2" fore="%skill_icon%2">
+                            <img height="%2_negative_height%2">
+                            <img src="%bg_icon%2" width=%bg_width%2 height=%bg_height%2>
                         </td>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%3">
-                            <button action="bypass autofarm skills page 1 3" width="%skill_width%3" height="%skill_height%3" back="%skill_icon%3" fore="%skill_icon%3">
-                            <img height="%2_negative_height%3"> 
-                            <img src="%bg_icon%3" width="%bg_width%3" height="%bg_height%3">
+                            <button action="bypass autofarm skills page 1 3" width=%skill_width%3 height=%skill_height%3 back="%skill_icon%3" fore="%skill_icon%3">
+                            <img height="%2_negative_height%3">
+                            <img src="%bg_icon%3" width=%bg_width%3 height=%bg_height%3>
                         </td>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%4">
-                            <button action="bypass autofarm skills page 1 4" width="%skill_width%4" height="%skill_height%4" back="%skill_icon%4" fore="%skill_icon%4">
-                            <img height="%2_negative_height%4"> 
-                            <img src="%bg_icon%4" width="%bg_width%4" height="%bg_height%4">
+                            <button action="bypass autofarm skills page 1 4" width=%skill_width%4 height=%skill_height%4 back="%skill_icon%4" fore="%skill_icon%4">
+                            <img height="%2_negative_height%4">
+                            <img src="%bg_icon%4" width=%bg_width%4 height=%bg_height%4>
                         </td>
-                        <td align="center" width=36 height=36>
+                        <td align=center>
                             <img height="%1_negative_height%5">
-                            <button action="bypass autofarm skills page 1 5" width="%skill_width%5" height="%skill_height%5" back="%skill_icon%5" fore="%skill_icon%5">
-                            <img height="%2_negative_height%5"> 
-                            <img src="%bg_icon%5" width="%bg_width%5" height="%bg_height%5">
+                            <button action="bypass autofarm skills page 1 5" width=%skill_width%5 height=%skill_height%5 back="%skill_icon%5" fore="%skill_icon%5">
+                            <img height="%2_negative_height%5">
+                            <img src="%bg_icon%5" width=%bg_width%5 height=%bg_height%5>
                         </td>
                     </tr>
+
                 </table>
             </td>
         </tr>
     </table>
-</center>
-</body>
-</html>
+    </center>
+    </body></html>

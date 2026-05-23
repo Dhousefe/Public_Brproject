@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	
+	<item id="9873" type="Armor" name="Black Adidas">
+    <set name="icon" val="LineageCustom2/Adidas_01_i00" />
+    <set name="default_action" val="equip" />
+    <set name="armor_type" val="NONE" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="crystal_type" val="NONE" />
+    <set name="crystal_count" val="0" />
+    <set name="enchant_enabled" val="false" />
+    <set name="stackable" val="false" />
+</item>
+	
+	<item id="9874" type="Armor" name="Yellow Adidas">
+    <set name="icon" val="LineageCustom2.Adidas_02_i00" />
+    <set name="default_action" val="equip" />
+    <set name="armor_type" val="NONE" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="crystal_type" val="NONE" />
+    <set name="crystal_count" val="0" />
+    <set name="enchant_enabled" val="false" />
+    <set name="stackable" val="false" />
+</item>
+	
+	<item id="9875" type="Armor" name="Red Adidas">
+    <set name="icon" val="LineageCustom2.Adidas_03_i00" />
+    <set name="default_action" val="equip" />
+    <set name="armor_type" val="NONE" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="crystal_type" val="NONE" />
+    <set name="crystal_count" val="0" />
+    <set name="enchant_enabled" val="false" />
+    <set name="stackable" val="false" />
+</item>
+	
+	<item id="9876" type="Armor" name="Green Adidas">
+    <set name="icon" val="LineageCustom2.Adidas_04_i00" />
+    <set name="default_action" val="equip" />
+    <set name="armor_type" val="NONE" />
+    <set name="bodypart" val="fullarmor" />
+    <set name="material" val="CLOTH" />
+    <set name="weight" val="0" />
+    <set name="price" val="1" />
+    <set name="crystal_type" val="NONE" />
+    <set name="crystal_count" val="0" />
+    <set name="enchant_enabled" val="false" />
+    <set name="stackable" val="false" />
+</item>
+
+    <item id="9839" type="Armor" name="Skin: Archer">
+        <set name="icon" val="skinicon.archer_f"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9840" type="Armor" name="Skin: Green Archer">
+        <set name="icon" val="Euro_custom.MF_Euro__001_m00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9841" type="Armor" name="Skin: Light Assassin">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9842" type="Armor" name="Skin: Dark Assassin">
+        <set name="icon" val="favero_l2_icons02.j_earring_of_orfen_i02"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9843" type="Armor" name="Skin: Red Musketeer">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9844" type="Armor" name="Skin: Muskeeter">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9845" type="Armor" name="Skin: Wizard">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9846" type="Armor" name="Skin: Warrior">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9847" type="Armor" name="Skin: Cat">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9848" type="Armor" name="Skin: King">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9849" type="Armor" name="Skin: White King">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9850" type="Armor" name="Skin: Valkyri">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9851" type="Armor" name="Skin: Anakim">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9852" type="Armor" name="Skin: Pirate">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9853" type="Armor" name="Skin: Pirate Blue">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9854" type="Armor" name="Skin: Ninja">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9855" type="Armor" name="Skin: Samurai">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9856" type="Armor" name="Skin: Dark Wizard">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9857" type="Armor" name="Skin: Vampire">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9858" type="Armor" name="Skin: Beleth">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9859" type="Armor" name="Skin: Cyborg">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9860" type="Armor" name="Skin: Cowboy">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9861" type="Armor" name="Skin: Barbarian">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9862" type="Armor" name="Skin: Dragon">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9863" type="Armor" name="Skin: White Knight">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9864" type="Armor" name="Skin: Red Santa">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9865" type="Armor" name="Skin: Blue Santa">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9866" type="Armor" name="Skin: Dark Knight">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9867" type="Armor" name="Skin: Healer">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9868" type="Armor" name="Skin: Lilith">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9869" type="Armor" name="Skin: Pancake">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9870" type="Armor" name="Skin: Ice Man Cake">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9871" type="Armor" name="Skin: Pancake">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+    <item id="9872" type="Armor" name="Skin: Ice Man Cake">
+        <set name="icon" val="icon.Adidas_01_i00"/>
+        <set name="default_action" val="equip"/>
+        <set name="armor_type" val="NONE"/>
+        <set name="bodypart" val="fullarmor"/>
+        <set name="material" val="CLOTH"/>
+        <set name="weight" val="0"/>
+        <set name="price" val="0"/>
+        <set name="crystal_type" val="NONE"/>
+        <set name="crystal_count" val="0"/>
+        <set name="enchant_enabled" val="false"/>
+        <set name="stackable" val="false"/>
+    </item>
+</list>

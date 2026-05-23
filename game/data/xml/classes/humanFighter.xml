@@ -13,12 +13,35 @@
 		<set hpRegenTable="2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5"/>
 		<set mpRegenTable="0.9;0.9;0.9;0.9;0.9;0.9;0.9;0.9;0.9;0.9;1.2;1.2;1.2;1.2;1.2;1.2;1.2;1.2;1.2;1.2;1.5;1.5;1.5;1.5;1.5;1.5;1.5;1.5;1.5;1.5;1.8;1.8;1.8;1.8;1.8;1.8;1.8;1.8;1.8;1.8;2.1;2.1;2.1;2.1;2.1;2.1;2.1;2.1;2.1;2.1;2.4;2.4;2.4;2.4;2.4;2.4;2.4;2.4;2.4;2.4;2.7;2.7;2.7;2.7;2.7;2.7;2.7;2.7;2.7;2.7;3.0;3.0;3.0;3.0;3.0;3.0;3.0;3.0;3.0;3.0"/>
 		<set cpRegenTable="2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.0;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;2.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;3.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;5.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;6.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;7.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5;8.5"/>
+		<set title="Brproject"/>
+		<set buffs="1204-1;1068-1;1040-1;1035-1;1036-1;1045-1;1086-1;1077-1;1240-1;1242-1;264-1;267-1;268-1;269-1;304-1;349-1;364-1;271-1;274-1;275-1;1363-1;1391-1;4699-2;4703-2"/>
+		<macros>
+			<macro panel="2" slot="0" name="Menu" action="Open player settings panel" acronim="MENU" command=".menu" />
+			<macro panel="2" slot="1" name="Premium" action="Check Premium status of PA" acronim="PREM" command=".premium" />
+			<macro panel="1" slot="0" name="Raid" action="Check Raid Boss status" acronim="RAID" command=".raid" />
+			<macro panel="1" slot="1" name="Epic" action="Check Epic Boss status" acronim="EPIC" command=".epic" />
+			<macro panel="1" slot="2" name="Skin" action="Manage Skin" acronim="SKIN" command=".skin" />
+			<macro panel="1" slot="3" name="Tournament" action="Tournament Lobby" acronim="TOUR" command=".tour" />
+			<macro panel="1" slot="4" name="Remove Buff" action="Remove Buff" acronim="REM" command=".rembuff" />
+			<macro panel="1" slot="5" name="Manage Roulette" action="Roulette" acronim="ROUL" command=".roulette" />
+		</macros>
 		<items>
 			<item id="1147" count="1"/>
 			<item id="1146" count="1"/>
 			<item id="10" count="1" isEquipped="false"/>
 			<item id="2369" count="1"/>
 			<item id="5588" count="1"/>
+			<item id="4037" count="10"/>
+			<item id="5556" count="1"/>
+			<item id="15022" count="1"/>
+			<item id="15021" count="1"/>
+			<item id="15020" count="1"/>
+			<item id="15019" count="1"/>
+			<item id="15018" count="1"/>
+			<item id="15017" count="1"/>
+			<item id="15023" count="1"/>
+			<item id="15024" count="1"/>
+			<item id="15025" count="1"/>
 		</items>
 		<skills>
 			<!-- Power Strike -->

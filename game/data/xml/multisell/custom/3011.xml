@@ -5,6 +5,10 @@
 	</npcs>
 	<item>
 		<ingredient id="57" count="100"/><!-- adena -->
+		<production id="1835" count="1000"/><!-- soulshot_d -->
+	</item>
+	<item>
+		<ingredient id="57" count="100"/><!-- adena -->
 		<production id="1463" count="1000"/><!-- soulshot_d -->
 	</item>
 	<item>
@@ -22,6 +26,10 @@
 	<item>
 		<ingredient id="57" count="100"/><!-- adena -->
 		<production id="1467" count="1000"/><!-- soulshot_s -->
+	</item>
+	<item>
+		<ingredient id="57" count="100"/><!-- adena -->
+		<production id="3947" count="1000"/><!-- soulshot_s -->
 	</item>
 	<item>
 		<ingredient id="57" count="100"/><!-- adena -->
@@ -118,6 +126,18 @@
 	<item>
 		<ingredient id="57" count="100"/><!-- adena -->
 		<production id="8169" count="1"/><!-- false_nucleus_of_life_a -->
+	</item>
+	<item>
+		<ingredient id="57" count="100"/><!-- adena -->
+		<production id="17" count="1000"/><!-- silver_arrow -->
+	</item>
+	<item>
+		<ingredient id="57" count="100"/><!-- adena -->
+		<production id="1341" count="1000"/><!-- silver_arrow -->
+	</item>
+	<item>
+		<ingredient id="57" count="100"/><!-- adena -->
+		<production id="1342" count="1000"/><!-- silver_arrow -->
 	</item>
 	<item>
 		<ingredient id="57" count="100"/><!-- adena -->

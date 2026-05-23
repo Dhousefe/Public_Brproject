@@ -1,0 +1,36 @@
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ </head>
+ <body>
+  <font color="LEVEL">Os lances só são permitidos em um salão do clã.</font>Quando uma oferta é enviada, o valor da oferta em adena é <font color="LEVEL">depositado</font> do armazém do clã para o leilão. <font color="LEVEL">10% do valor do lance é um imposto sobre transações</font> e não podem ser devolvidos mesmo que a licitação seja cancelada.
+  <br>
+  <font color="LEVEL">O preço da oferta</font>deve ser superior ao preço mínimo do lance (ou ao preço do lance anterior, no caso de novos lances) e o clã que tiver escrito o preço mais alto no final do leilão ganha o leilão.
+  <br>
+  Atualmente, existem <font color="aaccff">%PLEDGE_ADENA%</font> adena no armazém do clã. O valor mínimo que pode ser oferecido é <font color="aaccff">%AGIT_AUCTION_MINBID%</font> adena.
+  <br>
+  Quanto você deseja oferecer?
+  <table width="270">
+   <tbody>
+    <tr>
+     <td width="220" align="right"><edit var="bidprice" width="220" align="right" type="number"></td>
+     <td width="50" align="right">adena</td>
+    </tr>
+   </tbody>
+  </table>
+  <img src="L2UI.SquareBlank" width="270" height="10"><img src="L2UI.SquareWhite" width="270" height="1"> <img src="L2UI.SquareBlank" width="270" height="5">
+  <table width="270">
+   <tbody>
+    <tr>
+     <td width="130"></td>
+     <td width="70" align="center">
+      <button action="%AGIT_LINK_BACK%" value="Back" width="70" height="21" back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton">
+     </td>
+     <td width="70" align="center">
+      <button action="bypass -h npc_%objectId%_bid $bidprice" value="Confirm" width="70" height="21" back="L2UI.DefaultButton_click" fore="L2UI.DefaultButton">
+     </td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

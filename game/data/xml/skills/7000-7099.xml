@@ -116,7 +116,7 @@
 		<set name="target" val="SELF" />
 		<for>
 			<effect count="0x7fffffff" name="ManaDamOverTime" time="10" val="0">
-				<mul stat="pAtkSpd" val="#amount" />
+				<mul stat="pAtkSpd" val="1.5" />
 				<mul stat="runSpd" val="#amount" />
 				<mul stat="mAtkSpd" val="#amount" />
 				<mul stat="pReuse" val="#reuse" />

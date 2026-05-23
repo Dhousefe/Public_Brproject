@@ -19,8 +19,8 @@
 -->
 
 <restrictions>
-    <grade name="C" enabled="false" />
-    <grade name="B" enabled="false" availableFrom="2025-06-21 12:00:00" message="Itens grau {grade} estarão disponíveis em {date}." />
-    <grade name="A" enabled="false" availableFrom="2025-06-25 12:00:00" message="Você ainda não pode equipar itens A. Liberação: {date}." />
+    <grade name="C" enabled="true" />
+    <grade name="B" enabled="true" availableFrom="2025-06-21 12:00:00" message="Itens grau {grade} estarão disponíveis em {date}." />
+    <grade name="A" enabled="true" availableFrom="2025-06-25 12:00:00" message="Você ainda não pode equipar itens A. Liberação: {date}." />
     <grade name="S" enabled="true" availableFrom="2025-06-30 18:00:00" message="Grade {grade} sera liberado as {date}!" />
 </restrictions>
