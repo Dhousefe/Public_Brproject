@@ -17,15 +17,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * * Our main Developers: Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
- * Our special thanks: Nattan Felipe, Diego Fonseca, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+ * Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+ * SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
  * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.pool
 import ext.mods.Config
 import kotlinx.coroutines.*
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardOpenOption
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.*
 import java.util.concurrent.atomic.LongAdder
 import java.util.logging.Logger
+import java.io.File
 object CoroutinePool {
     private val LOGGER: Logger = Logger.getLogger(CoroutinePool::class.java.name)
     private var scheduledExecutors: Array<ScheduledThreadPoolExecutor>? = null
@@ -37,6 +44,7 @@ object CoroutinePool {
     
     val PathfindingDispatcher: CoroutineDispatcher
         get() = pathfindingExecutor?.asCoroutineDispatcher() ?: Dispatchers.Default
+        
     private val rejectedHandler = RejectedExecutionHandlerOptimized()
     private val totalTasksSubmitted = LongAdder()
     private val totalTasksCompleted = LongAdder()
@@ -45,6 +53,18 @@ object CoroutinePool {
     private val pathfindingTasksSubmitted = LongAdder()
     private val pathfindingTasksCompleted = LongAdder()
     private const val MAX_DELAY_MS: Long = 2_000_000_000L
+    enum class ExecutionRoute { PLATFORM, VIRTUAL }
+    
+    private val taskRoutingHistory = ConcurrentHashMap<String, ExecutionRoute>()
+    
+    private const val SMART_SLOW_THRESHOLD_MS: Long = 15L
+    private const val SMART_FAST_THRESHOLD_MS: Long = 2L
+    var ENABLE_PROFILER = true 
+    var BOTTLENECK_THRESHOLD_MS = 50L 
+    
+    private const val DEBUG_FILE_NAME = "log/coroutine_bottlenecks.log"
+    private val fileWriteLock = Any()
+    private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
     
     @JvmStatic 
     fun init() {
@@ -52,6 +72,9 @@ object CoroutinePool {
             if (scheduledExecutors != null) {
                 LOGGER.warning("CoroutinePool já foi inicializado. Ignorando nova inicialização.")
                 return
+            }
+            if (ENABLE_PROFILER) {
+                File("log").mkdirs()
             }
             val availableProcessors = Runtime.getRuntime().availableProcessors()
             val totalScheduled = Config.SCHEDULED_THREAD_POOL_COUNT.let {
@@ -123,10 +146,12 @@ object CoroutinePool {
             )
             
             LOGGER.info("=== Inicializado ===")
-            LOGGER.info("  - Scheduled: $scheduledPoolCount pools x $scheduledPoolCoreSize threads (total $totalScheduled)")
-            LOGGER.info("  - Instant: $instantPoolCount pools x core $instantPoolCoreSize max $instantPoolMaxSize (total até $totalInstant)")
+            LOGGER.info("  - Scheduled: $scheduledPoolCount pools x $scheduledPoolCoreSize threads")
+            LOGGER.info("  - Instant: $instantPoolCount pools x core $instantPoolCoreSize max $instantPoolMaxSize")
             LOGGER.info("  - Virtual Thread Executor: Ativo (I/O-bound tasks)")
             LOGGER.info("  - Pathfinding Threads: $pathfindingThreads (CPU-bound)")
+            LOGGER.info("  - Smart Dispatcher: Ativo (Lento > ${SMART_SLOW_THRESHOLD_MS}ms)")
+            LOGGER.info("  - Global Profiler: ${if (ENABLE_PROFILER) "ATIVO" else "DESATIVADO"}")
             LOGGER.info("  - JVM: ${System.getProperty("java.version")}")
             
         } catch (e: Exception) {
@@ -135,7 +160,90 @@ object CoroutinePool {
             throw e
         }
     }
-    
+    private fun writeBottleneckToFile(message: String) {
+        if (!ENABLE_PROFILER) return
+        
+        virtualExecutor?.execute {
+            synchronized(fileWriteLock) {
+                try {
+                    val timestamp = LocalDateTime.now().format(dateFormatter)
+                    val logLine = "[$timestamp] $message\n"
+                    Files.write(
+                        Paths.get(DEBUG_FILE_NAME),
+                        logLine.toByteArray(),
+                        StandardOpenOption.CREATE,
+                        StandardOpenOption.APPEND
+                    )
+                } catch (e: Exception) {
+                    LOGGER.severe("Falha ao gravar no log de gargalos: ${e.message}")
+                }
+            }
+        }
+    }
+    private fun wrapProfiler(task: Runnable, executorName: String): Runnable {
+        if (!ENABLE_PROFILER) {
+            return Runnable {
+                val start = System.nanoTime()
+                try { task.run() } finally {
+                    totalTasksCompleted.increment()
+                    totalExecutionTimeMs.add((System.nanoTime() - start) / 1_000_000)
+                }
+            }
+        }
+        val callerTrace = Exception().stackTrace.firstOrNull {
+            !it.className.contains("ext.mods.commons.pool.CoroutinePool") && 
+            !it.className.contains("ext.mods.commons.pool.ThreadPool") &&
+            !it.className.contains("java.lang.Thread")
+        }
+        return Runnable {
+            val start = System.nanoTime()
+            try {
+                task.run()
+            } finally {
+                val elapsedMs = (System.nanoTime() - start) / 1_000_000
+                totalTasksCompleted.increment()
+                totalExecutionTimeMs.add(elapsedMs)
+                if (elapsedMs >= BOTTLENECK_THRESHOLD_MS) {
+                    val callerInfo = callerTrace?.let { "${it.className}.${it.methodName}(${it.fileName}:${it.lineNumber})" } ?: "Desconhecido"
+                    val alertMessage = "[GARGALO - $executorName] Tarefa originada em [$callerInfo] levou ${elapsedMs}ms"
+                    
+                    writeBottleneckToFile(alertMessage)
+                }
+            }
+        }
+    }
+    @JvmStatic
+    fun executeSmart(taskId: String, task: Runnable) {
+        val currentRoute = taskRoutingHistory.getOrDefault(taskId, ExecutionRoute.PLATFORM)
+        
+        val wrappedTask = Runnable {
+            val startTime = System.nanoTime()
+            try {
+                task.run()
+            } finally {
+                val elapsedMs = (System.nanoTime() - startTime) / 1_000_000
+                
+                if (currentRoute == ExecutionRoute.PLATFORM && elapsedMs >= SMART_SLOW_THRESHOLD_MS) {
+                    taskRoutingHistory[taskId] = ExecutionRoute.VIRTUAL
+                } else if (currentRoute == ExecutionRoute.VIRTUAL && elapsedMs <= SMART_FAST_THRESHOLD_MS) {
+                    taskRoutingHistory[taskId] = ExecutionRoute.PLATFORM
+                }
+                
+                if (ENABLE_PROFILER && elapsedMs >= BOTTLENECK_THRESHOLD_MS) {
+                    val alertMessage = "[GARGALO - SmartPool] A tarefa nomeada '$taskId' levou ${elapsedMs}ms"
+                    writeBottleneckToFile(alertMessage)
+                }
+            }
+        }
+        when (currentRoute) {
+            ExecutionRoute.PLATFORM -> execute(wrappedTask)
+            ExecutionRoute.VIRTUAL -> virtualExecutor?.execute(wrappedTask) ?: execute(wrappedTask)
+        }
+    }
+    @JvmStatic
+    fun executeSmart(task: Runnable) {
+        executeSmart(task.javaClass.simpleName, task)
+    }
     @JvmStatic 
     fun execute(r: Runnable) {
         val executors = instantExecutors
@@ -148,20 +256,8 @@ object CoroutinePool {
         
         try {
             totalTasksSubmitted.increment()
-            val startTime = System.nanoTime()
-            
             val selectedPool = executors[ThreadLocalRandom.current().nextInt(executors.size)]
-            
-            selectedPool.execute {
-                try {
-                    r.run()
-                    totalTasksCompleted.increment()
-                    totalExecutionTimeMs.add((System.nanoTime() - startTime) / 1_000_000)
-                } catch (e: Throwable) {
-                    val t = Thread.currentThread()
-                    t.uncaughtExceptionHandler?.uncaughtException(t, e)
-                }
-            }
+            selectedPool.execute(wrapProfiler(r, "InstantPool"))
         } catch (e: RejectedExecutionException) {
             totalTasksRejected.increment()
             LOGGER.warning("Tarefa rejeitada (pool cheio). Executando na thread atual.")
@@ -179,27 +275,13 @@ object CoroutinePool {
     @JvmStatic
     fun executeIO(task: Runnable) {
         val executor = virtualExecutor
-        
         if (executor == null) {
             execute(task)
             return
         }
-        
         try {
             totalTasksSubmitted.increment()
-            val startTime = System.nanoTime()
-            
-            executor.execute {
-                try {
-                    task.run()
-                    totalTasksCompleted.increment()
-                    totalExecutionTimeMs.add((System.nanoTime() - startTime) / 1_000_000)
-                } catch (e: Throwable) {
-                    val t = Thread.currentThread()
-                    t.uncaughtExceptionHandler?.uncaughtException(t, e)
-                }
-            }
-            
+            executor.execute(wrapProfiler(task, "VirtualPool"))
         } catch (e: Exception) {
             totalTasksRejected.increment()
             LOGGER.severe("Erro ao executar tarefa I/O: ${e.message}")
@@ -209,15 +291,11 @@ object CoroutinePool {
     
     @JvmStatic
     fun schedule(r: Runnable, delay: Long): ScheduledFuture<*> {
-        val executors = scheduledExecutors
-        if (executors == null || executors.isEmpty()) {
-            LOGGER.fine("Schedule ignorado (pool não inicializado ou já desligado).")
-            return ScheduledFutureTask.cancelled()
-        }
+        val executors = scheduledExecutors ?: return ScheduledFutureTask.cancelled()
         return try {
             totalTasksSubmitted.increment()
             val selectedPool = executors[ThreadLocalRandom.current().nextInt(executors.size)]
-            selectedPool.schedule(RunnableWrapper(r), validate(delay), TimeUnit.MILLISECONDS)
+            selectedPool.schedule(wrapProfiler(r, "ScheduledPool"), validate(delay), TimeUnit.MILLISECONDS)
         } catch (e: Exception) {
             LOGGER.severe("Erro ao agendar tarefa: ${e.message}")
             ScheduledFutureTask.cancelled()
@@ -225,15 +303,11 @@ object CoroutinePool {
     }
     @JvmStatic
     fun scheduleAtFixedRate(r: Runnable, delay: Long, period: Long): ScheduledFuture<*> {
-        val executors = scheduledExecutors
-        if (executors == null || executors.isEmpty()) {
-            LOGGER.fine("ScheduleAtFixedRate ignorado (pool não inicializado ou já desligado).")
-            return ScheduledFutureTask.cancelled()
-        }
+        val executors = scheduledExecutors ?: return ScheduledFutureTask.cancelled()
         return try {
             totalTasksSubmitted.increment()
             val selectedPool = executors[ThreadLocalRandom.current().nextInt(executors.size)]
-            selectedPool.scheduleAtFixedRate(RunnableWrapper(r), validate(delay), validate(period), TimeUnit.MILLISECONDS)
+            selectedPool.scheduleAtFixedRate(wrapProfiler(r, "ScheduledPool-Periodic"), validate(delay), validate(period), TimeUnit.MILLISECONDS)
         } catch (e: Exception) {
             LOGGER.severe("Erro ao agendar tarefa periódica: ${e.message}")
             ScheduledFutureTask.cancelled()
@@ -242,22 +316,10 @@ object CoroutinePool {
     
     @JvmStatic
     fun executePathfinding(task: Runnable) {
-        val executor = pathfindingExecutor
-        if (executor == null) {
-            task.run()
-            return
-        }
+        val executor = pathfindingExecutor ?: run { task.run(); return }
         try {
             pathfindingTasksSubmitted.increment()
-            executor.execute(RunnableWrapper {
-                try {
-                    task.run()
-                    pathfindingTasksCompleted.increment()
-                } catch (e: Throwable) {
-                    val t = Thread.currentThread()
-                    t.uncaughtExceptionHandler?.uncaughtException(t, e)
-                }
-            })
+            executor.execute(wrapProfiler(task, "PathfindingPool"))
         } catch (e: Exception) {
             LOGGER.fine("PathfindingPool ocupado/erro: ${e.message}")
             task.run()
@@ -266,18 +328,17 @@ object CoroutinePool {
     
     @JvmStatic
     fun <T> runPathfindingBlocking(block: () -> T): T {
-        val executor = pathfindingExecutor
-        if (executor == null) return block()
-        try {
+        val executor = pathfindingExecutor ?: return block()
+        return try {
             pathfindingTasksSubmitted.increment()
             val future = CompletableFuture.supplyAsync({
                 val result = block()
                 pathfindingTasksCompleted.increment()
                 result
             }, executor)
-            return future.get()
+            future.get()
         } catch (e: Exception) {
-            return block()
+            block()
         }
     }
     
@@ -315,7 +376,6 @@ object CoroutinePool {
         val instantPools = instantExecutors ?: emptyArray()
         val scheduledPools = scheduledExecutors ?: emptyArray()
         val pfExecutor = pathfindingExecutor
-        
         val totalInstantCapacity = instantPools.sumOf { it.maximumPoolSize }
         
         return mapOf(
@@ -323,20 +383,19 @@ object CoroutinePool {
             "tasksCompleted" to totalTasksCompleted.sum(),
             "tasksRejected" to totalTasksRejected.sum(),
             "averageLatency" to getAverageExecutionTimeMs(),
-            
             "scheduledPools" to scheduledPools.size,
             "scheduledQueueSize" to scheduledPools.sumOf { it.queue.size },
-            
             "instantPools" to instantPools.size,
             "instantPoolsSize" to totalInstantCapacity,
             "instantPoolsActive" to instantPools.sumOf { it.activeCount },
             "instantPoolsQueueSize" to instantPools.sumOf { it.queue.size },
-            
             "pathfindingSize" to (pfExecutor?.maximumPoolSize ?: 0),
             "pathfindingActive" to getPathfindingActiveCount(),
             "pathfindingQueueSize" to getPathfindingQueueSize(),
             "pathfindingTasksSubmitted" to pathfindingTasksSubmitted.sum(),
-            "pathfindingTasksCompleted" to pathfindingTasksCompleted.sum()
+            "pathfindingTasksCompleted" to pathfindingTasksCompleted.sum(),
+            "smartRoutesTracked" to taskRoutingHistory.size,
+            "tasksInVirtualRoute" to taskRoutingHistory.values.count { it == ExecutionRoute.VIRTUAL }
         )
     }
     
@@ -360,11 +419,13 @@ object CoroutinePool {
             pathfindingExecutor?.shutdown()
             virtualExecutor?.shutdown()
             forkJoinPool?.shutdown()
+            
             scheduledExecutors = null
             instantExecutors = null
             pathfindingExecutor = null
             virtualExecutor = null
             forkJoinPool = null
+            taskRoutingHistory.clear()
             LOGGER.info("CoroutinePool desligado.")
         } catch (e: Exception) {
             LOGGER.severe("Erro ao desligar: ${e.message}")
