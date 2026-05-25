@@ -17,7 +17,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * * Our main Developers: Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
- * Our special thanks: Nattan Felipe, Diego Fonseca, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+ * Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+ * SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
  * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.gameserver.geoengine
@@ -35,6 +36,8 @@ import ext.mods.gameserver.model.actor.Playable
 import ext.mods.gameserver.model.location.Location
 import ext.mods.gameserver.network.serverpackets.ExServerPrimitive
 import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.awt.Color
 import java.io.File
 import java.io.FileOutputStream
@@ -42,7 +45,6 @@ import java.io.PrintWriter
 import java.io.RandomAccessFile
 import java.nio.ByteOrder
 import java.nio.channels.FileChannel
-import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.locks.StampedLock
 import kotlin.math.abs
 import kotlin.math.max
@@ -52,12 +54,16 @@ class GeoEngine private constructor() {
     private val _blocks: Array<Array<ABlock>>
     private val _geoBugReports: PrintWriter?
     
-    private val sl = StampedLock()
-    
-    private val legacyLock = Any()
-    private val heightCache = ConcurrentHashMap<Pair<Int, Int>, Short>(65536)
-    private val nsweCache = ConcurrentHashMap<Pair<Int, Int>, Byte>(32768)
-    private val blockCache = ConcurrentHashMap<Pair<Int, Int>, ABlock>(16384)
+    private val multilayerMutex = Mutex()
+    private val REGION_LOCKS = 256
+    private val regionLocks = Array(REGION_LOCKS) { StampedLock() }
+    private val PADDING_SHIFT = 3
+    private val CACHE_CAPACITY = 65536
+    private val CACHE_MASK = CACHE_CAPACITY - 1
+    private val heightCacheKeys = LongArray(CACHE_CAPACITY shl PADDING_SHIFT) { -1L }
+    private val heightCacheVals = ShortArray(CACHE_CAPACITY shl PADDING_SHIFT)
+    private val nsweCacheKeys = LongArray(CACHE_CAPACITY shl PADDING_SHIFT) { -1L }
+    private val nsweCacheVals = ByteArray(CACHE_CAPACITY shl PADDING_SHIFT)
     init {
         _blocks = Array(GeoStructure.GEO_BLOCKS_X) {
             Array(GeoStructure.GEO_BLOCKS_Y) { BlockNull }
@@ -68,9 +74,10 @@ class GeoEngine private constructor() {
         val parallelism = (cpuCores / 2).coerceIn(2, 6)
         
         GeoEngine.LOGGER.info("----------------------------------------------------------------")
-        GeoEngine.LOGGER.info(" GeoEngine: Iniciando modo Hibrido (IO Paralelo / Memoria Segura)")
+        GeoEngine.LOGGER.info(" GeoEngine: Iniciando V2 (Zero-GC / Lock Striping / Retail Physics)")
         GeoEngine.LOGGER.info(" Threads detectadas: $cpuCores | Usando: $parallelism threads para Geodata")
         GeoEngine.LOGGER.info("----------------------------------------------------------------")
+        
         val (loaded, failed) = runBlocking {
             val allRegions = (World.TILE_X_MIN..World.TILE_X_MAX).flatMap { rx ->
                 (World.TILE_Y_MIN..World.TILE_Y_MAX).map { ry -> rx to ry }
@@ -85,7 +92,6 @@ class GeoEngine private constructor() {
                     var l = 0
                     var f = 0
                     val start = System.currentTimeMillis()
-                    
                     for ((rx, ry) in batch) {
                         try {
                             if (props.containsKey("${rx}_$ry")) {
@@ -109,10 +115,12 @@ class GeoEngine private constructor() {
                 Pair(acc.first + pair.first, acc.second + pair.second)
             }
         }
+        
         GeoEngine.LOGGER.info("----------------------------------------------------------------")
         GeoEngine.LOGGER.info(" Geodata Carregada: $loaded Sucessos / $failed Falhas")
         GeoEngine.LOGGER.info("----------------------------------------------------------------")
         BlockMultilayer.release()
+        
         var writer: PrintWriter? = null
         try {
             val bugFile = File(Config.GEODATA_PATH + "geo_bugs.txt")
@@ -121,6 +129,7 @@ class GeoEngine private constructor() {
             GeoEngine.LOGGER.error("Couldn't load \"geo_bugs.txt\" file.", e)
         }
         _geoBugReports = writer
+        
         if (Config.USE_L2BR_PATHFINDING) {
             try {
                 val bridge = ext.mods.gameserver.geoengine.pathfinding.integration.GeoEngineBridge.getInstance()
@@ -132,7 +141,31 @@ class GeoEngine private constructor() {
             }
         }
     }
-    private fun loadGeoBlocks(regionX: Int, regionY: Int): Boolean {
+    
+    @Suppress("NOTHING_TO_INLINE")
+    private inline fun getLockFor(bx: Int, by: Int): StampedLock {
+        val index = ((bx * 31) + by) and (REGION_LOCKS - 1)
+        return regionLocks[index]
+    }
+    
+    @Suppress("NOTHING_TO_INLINE")
+    private inline fun getGeoKey(geoX: Int, geoY: Int, z: Int): Long {
+        return (geoX.toLong() shl 36) or 
+               (geoY.toLong() shl 18) or 
+               ((z shr 4).toLong() and 0x3FFFFL)
+    }
+    
+    @Suppress("NOTHING_TO_INLINE")
+    private inline fun hashKeyPadded(key: Long): Int {
+        var h = (key xor (key ushr 32)).toInt()
+        h = h xor (h ushr 16)
+        h = h * -2048144789
+        h = h xor (h ushr 13)
+        h = h * -1028477387
+        val baseIndex = (h xor (h ushr 16)) and CACHE_MASK
+        return baseIndex shl PADDING_SHIFT 
+    }
+    private suspend fun loadGeoBlocks(regionX: Int, regionY: Int): Boolean {
         val filename = String.format(Config.GEODATA_TYPE.filename, regionX, regionY)
         val filepath = Config.GEODATA_PATH + filename
         try {
@@ -141,7 +174,9 @@ class GeoEngine private constructor() {
                     val buffer = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size()).load()
                     buffer.order(ByteOrder.LITTLE_ENDIAN)
                     when (Config.GEODATA_TYPE) {
-                        GeoType.L2OFF -> repeat(18) { buffer.get() }
+                        GeoType.L2OFF -> {
+                            buffer.position(buffer.position() + 18)
+                        }
                         else -> { }
                     }
                     val blockX = (regionX - World.TILE_X_MIN) * GeoStructure.REGION_BLOCKS_X
@@ -154,9 +189,7 @@ class GeoEngine private constructor() {
                                     when (type) {
                                         GeoStructure.TYPE_FLAT_L2J_L2OFF -> BlockFlat(buffer, Config.GEODATA_TYPE)
                                         GeoStructure.TYPE_COMPLEX_L2J -> BlockComplex(buffer)
-                                        GeoStructure.TYPE_MULTILAYER_L2J -> synchronized(legacyLock) { 
-                                            BlockMultilayer(buffer, Config.GEODATA_TYPE) 
-                                        }
+                                        GeoStructure.TYPE_MULTILAYER_L2J -> multilayerMutex.withLock { BlockMultilayer(buffer, Config.GEODATA_TYPE) }
                                         else -> throw IllegalArgumentException("Unknown block type: $type")
                                     }
                                 }
@@ -165,9 +198,7 @@ class GeoEngine private constructor() {
                                     when (type) {
                                         GeoStructure.TYPE_FLAT_L2J_L2OFF.toShort() -> BlockFlat(buffer, Config.GEODATA_TYPE)
                                         GeoStructure.TYPE_COMPLEX_L2OFF.toShort() -> BlockComplex(buffer)
-                                        else -> synchronized(legacyLock) { 
-                                            BlockMultilayer(buffer, Config.GEODATA_TYPE) 
-                                        }
+                                        else -> multilayerMutex.withLock { BlockMultilayer(buffer, Config.GEODATA_TYPE) }
                                     }
                                 }
                             }
@@ -196,68 +227,61 @@ class GeoEngine private constructor() {
         }
     }
     private fun getBlockRaw(geoX: Int, geoY: Int): ABlock {
-        val ix = geoX / GeoStructure.BLOCK_CELLS_X
-        val iy = geoY / GeoStructure.BLOCK_CELLS_Y
+        val bx = geoX / GeoStructure.BLOCK_CELLS_X
+        val by = geoY / GeoStructure.BLOCK_CELLS_Y
         
-        var stamp = sl.tryOptimisticRead()
-        var block = _blocks[ix][iy]
-        if (!sl.validate(stamp)) {
-            stamp = sl.readLock()
+        val lock = getLockFor(bx, by)
+        val stamp = lock.tryOptimisticRead()
+        var block = _blocks[bx][by]
+        
+        if (!lock.validate(stamp)) {
+            val readStamp = lock.readLock()
             try {
-                block = _blocks[ix][iy]
+                block = _blocks[bx][by]
             } finally {
-                sl.unlockRead(stamp)
+                lock.unlockRead(readStamp)
             }
         }
         return block
     }
-    fun getBlock(geoX: Int, geoY: Int): ABlock {
-        val key = Pair(geoX, geoY)
-        return blockCache.getOrPut(key) { getBlockRaw(geoX, geoY) }
-    }
-    fun hasGeoPos(geoX: Int, geoY: Int): Boolean {
-        return getBlock(geoX, geoY).hasGeoPos()
-    }
+    fun getBlock(geoX: Int, geoY: Int): ABlock = getBlockRaw(geoX, geoY)
+    fun hasGeoPos(geoX: Int, geoY: Int): Boolean = getBlockRaw(geoX, geoY).hasGeoPos()
     fun getHeightNearest(geoX: Int, geoY: Int, worldZ: Int): Short {
-        val key = Pair(geoX, geoY)
-        return heightCache.getOrPut(key) { 
-             getBlockRaw(geoX, geoY).getHeightNearest(geoX, geoY, worldZ, null)
-        }
+        val key = getGeoKey(geoX, geoY, worldZ)
+        val index = hashKeyPadded(key)
+        
+        if (heightCacheKeys[index] == key) return heightCacheVals[index]
+        
+        val height = getBlockRaw(geoX, geoY).getHeightNearest(geoX, geoY, worldZ, null)
+        heightCacheKeys[index] = key
+        heightCacheVals[index] = height
+        return height
     }
     fun getHeightNearest(geoX: Int, geoY: Int, worldZ: Int, ignore: IGeoObject?): Short {
-        if (ignore != null) {
-            return getBlockRaw(geoX, geoY).getHeightNearest(geoX, geoY, worldZ, ignore)
-        }
+        if (ignore != null) return getBlockRaw(geoX, geoY).getHeightNearest(geoX, geoY, worldZ, ignore)
         return getHeightNearest(geoX, geoY, worldZ)
     }
     fun getNsweNearest(geoX: Int, geoY: Int, worldZ: Int): Byte {
-        val key = Pair(geoX, geoY)
-        return nsweCache.getOrPut(key) { 
-             getBlockRaw(geoX, geoY).getNsweNearest(geoX, geoY, worldZ, null)
-        }
+        val key = getGeoKey(geoX, geoY, worldZ)
+        val index = hashKeyPadded(key)
+        
+        if (nsweCacheKeys[index] == key) return nsweCacheVals[index]
+        
+        val nswe = getBlockRaw(geoX, geoY).getNsweNearest(geoX, geoY, worldZ, null)
+        nsweCacheKeys[index] = key
+        nsweCacheVals[index] = nswe
+        return nswe
     }
     fun getNsweNearest(geoX: Int, geoY: Int, worldZ: Int, ignore: IGeoObject?): Byte {
-        if (ignore != null) {
-            return getBlockRaw(geoX, geoY).getNsweNearest(geoX, geoY, worldZ, ignore)
-        }
+        if (ignore != null) return getBlockRaw(geoX, geoY).getNsweNearest(geoX, geoY, worldZ, ignore)
         return getNsweNearest(geoX, geoY, worldZ)
     }
-    fun hasGeo(worldX: Int, worldY: Int): Boolean {
-        return hasGeoPos(GeoEngine.getGeoX(worldX), GeoEngine.getGeoY(worldY))
-    }
-    fun getHeight(loc: Location): Short {
-        return getHeightNearest(GeoEngine.getGeoX(loc.x), GeoEngine.getGeoY(loc.y), loc.z)
-    }
-    fun getHeight(worldX: Int, worldY: Int, worldZ: Int): Short {
-        return getHeightNearest(GeoEngine.getGeoX(worldX), GeoEngine.getGeoY(worldY), worldZ)
-    }
-    fun getNswe(worldX: Int, worldY: Int, worldZ: Int): Byte {
-        return getNsweNearest(getGeoX(worldX), getGeoY(worldY), worldZ)
-    }
-    
+    fun hasGeo(worldX: Int, worldY: Int): Boolean = hasGeoPos(getGeoX(worldX), getGeoY(worldY))
+    fun getHeight(loc: Location): Short = getHeightNearest(getGeoX(loc.x), getGeoY(loc.y), loc.z)
+    fun getHeight(worldX: Int, worldY: Int, worldZ: Int): Short = getHeightNearest(getGeoX(worldX), getGeoY(worldY), worldZ)
+    fun getNswe(worldX: Int, worldY: Int, worldZ: Int): Byte = getNsweNearest(getGeoX(worldX), getGeoY(worldY), worldZ)
     private fun getBoundaryRadiusCells(): Int =
         if (Config.BOUNDARY_BUFFER <= 0) 1 else ((Config.BOUNDARY_BUFFER + GeoStructure.CELL_SIZE - 1) / GeoStructure.CELL_SIZE).coerceAtLeast(1)
-    
     fun hasBlockedNeighborAtSameLevel(geoX: Int, geoY: Int, z: Int): Boolean {
         val checkZ = z + GeoStructure.CELL_IGNORE_HEIGHT
         val radius = getBoundaryRadiusCells()
@@ -280,19 +304,29 @@ class GeoEngine private constructor() {
         }
         return false
     }
+    private fun invalidateCacheForObject(obj: IGeoObject) {
+        val minGX = obj.geoX
+        val minGY = obj.geoY
+        val geoData = obj.objectGeoData
+        val maxGX = minGX + geoData.size - 1
+        val maxGY = minGY + geoData[0].size - 1
+        
+        for (gx in minGX..maxGX) {
+            for (gy in minGY..maxGY) {
+                for (z in -15000..15000 step 16) {
+                    val key = getGeoKey(gx, gy, z)
+                    val index = hashKeyPadded(key)
+                    if (heightCacheKeys[index] == key) heightCacheKeys[index] = -1L
+                    if (nsweCacheKeys[index] == key) nsweCacheKeys[index] = -1L
+                }
+            }
+        }
+    }
     fun addGeoObject(obj: IGeoObject) {
         toggleGeoObject(obj, true)
-        flushCaches()
     }
     fun removeGeoObject(obj: IGeoObject) {
         toggleGeoObject(obj, false)
-        flushCaches()
-    }
-    
-    private fun flushCaches() {
-        heightCache.clear()
-        nsweCache.clear()
-        blockCache.clear()
     }
     private fun toggleGeoObject(obj: IGeoObject, add: Boolean) {
         val minGX = obj.geoX
@@ -302,10 +336,12 @@ class GeoEngine private constructor() {
         val maxBX = (minGX + geoData.size - 1) / GeoStructure.BLOCK_CELLS_X
         val minBY = minGY / GeoStructure.BLOCK_CELLS_Y
         val maxBY = (minGY + geoData[0].size - 1) / GeoStructure.BLOCK_CELLS_Y
-        val stamp = sl.writeLock()
-        try {
-            for (bx in minBX..maxBX) {
-                for (by in minBY..maxBY) {
+        
+        for (bx in minBX..maxBX) {
+            for (by in minBY..maxBY) {
+                val lock = getLockFor(bx, by)
+                val stamp = lock.writeLock()
+                try {
                     var block = _blocks[bx][by]
                     if (block !is IBlockDynamic) {
                         if (block is BlockNull) continue
@@ -322,11 +358,12 @@ class GeoEngine private constructor() {
                     } else {
                         (block as IBlockDynamic).removeGeoObject(obj)
                     }
+                } finally {
+                    lock.unlockWrite(stamp)
                 }
             }
-        } finally {
-            sl.unlockWrite(stamp)
         }
+        invalidateCacheForObject(obj)
     }
     fun canMoveAround(worldX: Int, worldY: Int, worldZ: Int): Boolean {
         val geoX = getGeoX(worldX)
@@ -383,7 +420,6 @@ class GeoEngine private constructor() {
         creature: Creature?
     ): Location {
         val advancedPhysics = true
-        
         when {
             advancedPhysics -> {
                 val wasInWater = isInWater(ox, oy, oz)
@@ -402,7 +438,6 @@ class GeoEngine private constructor() {
         }
         
         val collisionPathfinding = true
-        
         when {
             collisionPathfinding && creature != null -> {
                 val collisionRadius = creature.collisionRadius
@@ -806,6 +841,7 @@ class GeoEngine private constructor() {
         getValidLocation(obj.position, position)
     fun getValidLocation(origin: Location, target: Location): Location =
         getValidLocation(origin.x, origin.y, origin.z, target.x, target.y, target.z, null)
+    
     fun getValidLocation(
         ox: Int, oy: Int, oz: Int,
         tx: Int, ty: Int, tz: Int,
@@ -931,6 +967,7 @@ class GeoEngine private constructor() {
                                                     else computeLegacyPathRaw(gox, goy, goz, gtx, gty, gtz, debug)
                                                 } else computeLegacyPathRaw(gox, goy, goz, gtx, gty, gtz, debug)
                                             } else computeLegacyPathRaw(gox, goy, goz, gtx, gty, gtz, debug)
+                                            
                                             when {
                                                 rawPath.isEmpty() -> emptyList()
                                                 rawPath.size < 3 -> rawPath
