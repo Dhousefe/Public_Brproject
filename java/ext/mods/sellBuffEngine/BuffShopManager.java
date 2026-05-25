@@ -11,7 +11,8 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.sellBuffEngine;
@@ -32,14 +33,17 @@ import ext.mods.sellBuffEngine.BuffShopConfigs.Cost;
 import ext.mods.sellBuffEngine.BuffShopConfigs.SkillPath;
 import ext.mods.sellBuffEngine.ShopObject.PrivateBuff;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+
 public final class BuffShopManager
 {
 	private static final Logger _log = Logger.getLogger(BuffShopManager.class.getName());
-	private static final int OFFLINE_SHOPS_PER_TICK = 2;
-	private static final int OFFLINE_SHOPS_TICK_DELAY = 2000;
+	private static final int OFFLINE_SHOPS_PER_TICK = 5;
+	private static final int OFFLINE_SHOPS_TICK_DELAY = 800;
 	
 	private final BuffShopDAO dao;
 	private final BuffShopFactory factory;
+	
 	private final Map<Integer, ShopObject> shops = new ConcurrentHashMap<>();
 	private final Map<Integer, Integer> sellers = new ConcurrentHashMap<>();
 	private final Map<Integer, ShopObject> playerProfiles = new ConcurrentHashMap<>();
@@ -65,7 +69,7 @@ public final class BuffShopManager
 	{
 		if (!BuffShopConfigs.BUFFSHOP_ALLOW_CLASS.contains(player.getClassId().getId()))
 		{
-			player.sendMessage("Sua classe n�o tem permiss�o para criar uma loja de buffs.");
+			player.sendMessage("Sua classe nao tem permissao para criar uma loja de buffs.");
 			return;
 		}
 		BuffShopUIManager.getInstance().showManagementWindow(player, 1);
@@ -76,7 +80,7 @@ public final class BuffShopManager
 		final ShopObject shopProfile = getProfile(player);
 		if (shopProfile.getBuffList().size() >= BuffShopConfigs.BUFFSHOP_BUFFS_MAX_COUNT)
 		{
-			player.sendMessage("Voc� atingiu o limite m�ximo de buffs na loja.");
+			player.sendMessage("Voce atingiu o limite maximo de buffs na loja.");
 			return;
 		}
 		shopProfile.addBuff(skillId, skillLevel, price);
@@ -97,7 +101,7 @@ public final class BuffShopManager
 		
 		if (shopConfig.getBuffList().isEmpty())
 		{
-			player.sendMessage("Voc� precisa adicionar pelo menos um buff para vender.");
+			player.sendMessage("Voce precisa adicionar pelo menos um buff para vender.");
 			return;
 		}
 		if (shops.containsKey(player.getObjectId()))
@@ -126,7 +130,7 @@ public final class BuffShopManager
 		sellerNpc.broadcastUserInfo();
 		sellerNpc.broadcastPacket(new RecipeShopMsg(sellerNpc));
 		
-		ThreadPool.execute(() -> dao.saveShop(shopConfig));
+		ThreadPool.executeIO(() -> dao.saveShop(shopConfig));
 		player.sendMessage("Sua loja de buffs foi aberta com sucesso.");
 	}
 	
@@ -145,7 +149,7 @@ public final class BuffShopManager
 					sellerNpc.deleteMe();
 				}
 			}
-			ThreadPool.execute(() -> dao.removeShop(playerOwner.getObjectId()));
+			ThreadPool.executeIO(() -> dao.removeShop(playerOwner.getObjectId()));
 		}
 	}
 	
@@ -175,7 +179,7 @@ public final class BuffShopManager
 	
 	public void restoreOfflineTraders()
 	{
-		_log.info("BuffShopManager: Agendando restauração de lojas de buffs offline...");
+		_log.info("BuffShopManager: Agendando restauracao de lojas de buffs offline...");
 		
 		final List<ShopObject> offlineShops = dao.loadShops();
 		
@@ -184,7 +188,8 @@ public final class BuffShopManager
 			_log.info("BuffShopManager: Nenhuma loja de buffs offline para restaurar.");
 			return;
 		}
-		ThreadPool.schedule(new RestoreTask(offlineShops), 5000L);
+		
+		ThreadPool.scheduleIO(new RestoreTask(new ObjectArrayList<>(offlineShops)), 5000L);
 	}
 
 	private class RestoreTask implements Runnable
@@ -204,10 +209,8 @@ public final class BuffShopManager
 			int processed = 0;
 			while (processed < OFFLINE_SHOPS_PER_TICK && !_shopsToRestore.isEmpty())
 			{
-		
 				final ShopObject shopConfig = _shopsToRestore.remove(0);
 				
-	
 				if (World.getInstance().getPlayer(shopConfig.getOwnerId()) == null)
 				{
 					final Player sellerNpc = factory.createShopNpc(shopConfig);
@@ -234,9 +237,8 @@ public final class BuffShopManager
 
 			if (!_shopsToRestore.isEmpty())
 			{
-				ThreadPool.schedule(this, OFFLINE_SHOPS_TICK_DELAY);
+				ThreadPool.scheduleIO(this, OFFLINE_SHOPS_TICK_DELAY);
 			}
-			
 		}
 
 		public int getrestoredCount()
@@ -260,47 +262,42 @@ public final class BuffShopManager
 		final int ownerId = shop.getOwnerId();
 		final Player owner = World.getInstance().getPlayer(ownerId);
 		
-	
 		if (owner != null && owner.isOnline())
 		{
-		
 			owner.addAdena(price, true);
 			owner.sendMessage("Seu buff foi vendido por " + price + " adena!");
 		}
-	
 		else
 		{
-
-			ThreadPool.execute(() -> dao.addAdenaToOfflinePlayer(ownerId, price));
+			ThreadPool.executeIO(() -> dao.addAdenaToOfflinePlayer(ownerId, price));
 		}
 	}
 	
 	public void buyPermanentSkill(Player player, int skillId, int levelToLearn)
 	{
-
 		if (!BuffShopConfigs.BUFFSHOP_ALLOW_CLASS_SKILLSHOP.contains(player.getClassId().getId()))
 		{
-			BuffShopUIManager.getInstance().showSkillShopMessage(player, "A sua classe n�o pode usar esta loja.");
+			BuffShopUIManager.getInstance().showSkillShopMessage(player, "A sua classe nao pode usar esta loja.");
 			return;
 		}
 		
 		SkillPath skillPath = BuffShopConfigs.SKILL_SHOP_PATHS.get(skillId);
 		if (skillPath == null || levelToLearn > skillPath.maxLevel())
 		{
-			BuffShopUIManager.getInstance().showSkillShopMessage(player, "Esta skill n�o est� dispon�vel<br1> para compra neste n�vel.");
+			BuffShopUIManager.getInstance().showSkillShopMessage(player, "Esta skill nao esta disponivel<br1> para compra neste nivel.");
 			return;
 		}
 		
 		if (player.getSkillLevel(skillId) >= levelToLearn)
 		{
-			BuffShopUIManager.getInstance().showSkillShopMessage(player, "Voc� j� aprendeu este n�vel da skill.");
+			BuffShopUIManager.getInstance().showSkillShopMessage(player, "Voce ja aprendeu este nivel da skill.");
 			return;
 		}
 	
 		List<Cost> costs = skillPath.costsByLevel().get(levelToLearn);
 		if (costs == null || costs.isEmpty())
 		{
-			BuffShopUIManager.getInstance().showSkillShopMessage(player, "O custo n�o foi definido para<br1> este n�vel de skill.");
+			BuffShopUIManager.getInstance().showSkillShopMessage(player, "O custo nao foi definido para<br1> este nivel de skill.");
 			return;
 		}
 
@@ -308,7 +305,7 @@ public final class BuffShopManager
 		{
 			if (player.getInventory().getItemByItemId(cost.itemId()) == null || player.getInventory().getItemByItemId(cost.itemId()).getCount() < cost.count())
 			{
-				BuffShopUIManager.getInstance().showSkillShopMessage(player, "Voc� n�o possui os itens necess�rios<br1> para aprender esta skill.");
+				BuffShopUIManager.getInstance().showSkillShopMessage(player, "Voce nao possui os itens necessarios<br1> para aprender esta skill.");
 				return;
 			}
 		}
@@ -321,7 +318,7 @@ public final class BuffShopManager
 		final L2Skill skill = SkillTable.getInstance().getInfo(skillId, levelToLearn);
 		player.addSkill(skill, true);
 		
-		BuffShopUIManager.getInstance().showSkillShopMessage(player, "Você aprendeu<br><font color=LEVEL>" + skill.getName() + " Nível " + levelToLearn + "</font>!");
+		BuffShopUIManager.getInstance().showSkillShopMessage(player, "Voce aprendeu<br><font color=LEVEL>" + skill.getName() + " Nivel " + levelToLearn + "</font>!");
 		
 		BuffShopUIManager.getInstance().showSkillShopWindow(player, 1); 
 	}

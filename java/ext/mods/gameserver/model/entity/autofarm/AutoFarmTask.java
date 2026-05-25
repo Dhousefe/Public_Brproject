@@ -11,13 +11,13 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.gameserver.model.entity.autofarm;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Collection;
 
 import ext.mods.commons.pool.ThreadPool;
 
@@ -28,9 +28,11 @@ public class AutoFarmTask implements Runnable
 {
 	private int _runTick;
 	
+	private static final long INACTIVE_TIMEOUT = 600000L; 
+	
 	public AutoFarmTask()
 	{
-		ThreadPool.scheduleAtFixedRate(this, 400, 400);
+		ThreadPool.scheduleAtFixedRate(() -> ThreadPool.executeIO(this), 400, 400);
 	}
 	
 	@Override
@@ -38,19 +40,36 @@ public class AutoFarmTask implements Runnable
 	{
 		_runTick++;
 		
-		AutoFarmManager.getInstance().getPlayers().parallelStream().filter(AutoFarmProfile::isEnabled).forEach(AutoFarmProfile::startRoutine);
+		final Collection<AutoFarmProfile> players = AutoFarmManager.getInstance().getPlayers();
+		for (AutoFarmProfile profile : players)
+		{
+			if (profile.isEnabled())
+			{
+				profile.startRoutine();
+			}
+		}
 		
 		if (_runTick >= 60)
 		{
-			for (AutoFarmProfile autoFarmProfile : AutoFarmManager.getInstance().getPlayers())
+			final long currentTime = System.currentTimeMillis();
+			
+			for (AutoFarmProfile autoFarmProfile : players)
 			{
 				if (autoFarmProfile.isEnabled())
 					continue;
 				
-				if (System.currentTimeMillis() > autoFarmProfile.getLastActiveTime() + TimeUnit.MINUTES.toMillis(10))
+				if (currentTime > autoFarmProfile.getLastActiveTime() + INACTIVE_TIMEOUT)
 				{
-					final List<AutoFarmArea> areas = autoFarmProfile.getAreas().values().stream().filter(a -> a.getId() != autoFarmProfile.getSelectedAreaId() && a.isFromDb() && a.getType() == AutoFarmType.ZONA && a.getFarmZone().isBuilt()).toList();
-					areas.forEach(a -> a.getFarmZone().removeFromWorld());
+					for (AutoFarmArea area : autoFarmProfile.getAreas().values())
+					{
+						if (area.getId() != autoFarmProfile.getSelectedAreaId() 
+							&& area.isFromDb() 
+							&& area.getType() == AutoFarmType.ZONA 
+							&& area.getFarmZone().isBuilt())
+						{
+							area.getFarmZone().removeFromWorld();
+						}
+					}
 				}
 			}
 			
