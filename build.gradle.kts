@@ -5,6 +5,8 @@ import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.JavaExec 
 import org.gradle.api.Task
 import java.time.Instant
+import java.text.SimpleDateFormat
+import java.util.Date
 
 // 1. Plugins
 plugins {
@@ -117,7 +119,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     
     // Fast Collections (FastUtil)
-    implementation("it.unimi.dsi:fastutil:8.5.13")
+    implementation("it.unimi.dsi:fastutil-core:8.5.18")
     
     
     
@@ -261,7 +263,8 @@ tasks.register<Copy>("copyCrypta") {
 tasks.build {
     dependsOn(tasks.named("compileKotlin"))
     dependsOn(tasks.named("compileJava"))
-    dependsOn(tasks.named("jar")) // Garante que o server.jar seja gerado no build
+    dependsOn(tasks.named("jar"))
+	dependsOn(tasks.named("PrepararTeste"))
     dependsOn(tasks.named("syncBinClasses"))
 }
 
@@ -276,5 +279,113 @@ tasks.named("compileKotlin") {
             logger.lifecycle("Diretório de saída criado: ${outputDir.absolutePath}")
         }
         logger.lifecycle("Compilando Kotlin para: ${outputDir.absolutePath}")
+    }
+}
+
+
+// 13. PrepararTeste (Distribuição de Teste)
+tasks.register("PrepararTeste") {
+	dependsOn(tasks.named("compileJava"))
+    mustRunAfter(tasks.named("jar"))
+    group = "distribution"
+    description = "Cria uma distribuicao de teste rapida em Brproject_Distribution (Dev Teste)"
+    
+
+    doLast {
+        val buildZip = file("Brproject_Distribution")
+        
+        
+        val now = Date()
+        val dStamp = SimpleDateFormat("yyyyMMdd").format(now)
+        val tStamp = SimpleDateFormat("HHmm").format(now)
+
+        println("=== BUILD DE TESTE - APENAS ARQUIVOS ESSENCIAIS ===")
+        println("Mantendo: libs/, login/, images/, sound/, Hwid/, tools/")
+        println("Criando em: ${buildZip.absolutePath}")
+
+        
+        println("Removendo caches AppCDS (game/login)...")
+        project.delete(
+            "game/cache", "login/cache", "game/log", "login/log",
+            "${buildZip}/game/cache", "${buildZip}/login/cache", 
+            "${buildZip}/game/log", "${buildZip}/login/log"
+        )
+
+        // Configurações do Game
+        project.copy {
+            from("game/config")
+            into("${buildZip}/game/config")
+            include("**/*.properties", "**/*.ini")
+        }
+
+        // Bibliotecas
+        project.copy {
+            from("libs")
+            into("${buildZip}/libs")
+            include("**/*.jar")
+        }
+
+        // Login Server (excluindo cache)
+        project.copy {
+            from("login")
+            into("${buildZip}/login")
+            exclude("cache/**")
+        }
+
+        // Diretórios estáticos copiados integralmente
+        val staticDirs = listOf("images", "sound", "Hwid", "tools")
+        for (dir in staticDirs) {
+            project.copy {
+                from(dir)
+                into("${buildZip}/$dir")
+            }
+        }
+
+        // Scripts e arquivos raiz
+        project.copy {
+            from(".")
+            into(buildZip)
+            include(
+                "StartGame_SemDashboard.bat",
+                "StartLogin_SemDashboard.bat",
+                "README.md",
+                "Dockerfile",
+                "entrypoint.sh"
+            )
+        }
+
+        // Cache Scripts
+        project.copy {
+            from("cache")
+            into("${buildZip}/cache")
+            include("*.inc.bat")
+        }
+
+        // 4. Criação do arquivo BUILD_INFO.txt
+        val buildInfoFile = file("${buildZip}/BUILD_INFO.txt")
+        buildInfoFile.writeText("""
+            === BUILD DE TESTE ===
+            Data: $dStamp $tStamp
+            Tipo: Teste (sem arquivos de dados pesados)
+
+            ARQUIVOS INCLUÍDOS:
+            - libs/ (todas as bibliotecas)
+            - login/ (servidor de login)
+            - images/ (imagens da interface)
+            - sound/ (sons)
+            - Hwid/ (proteção HWID)
+            - tools/ (ferramentas)
+            - game/config/ (configurações)
+
+            ARQUIVOS EXCLUÍDOS (para reduzir tamanho):
+            - game/data/custom/ (mods customizados)
+            - game/data/geodata/ (dados geográficos)
+            - game/data/locale/ (arquivos de idioma)
+            - game/data/xml/ (arquivos XML)
+        """.trimIndent())
+
+        println("=== BUILD CONCLUiDO ===")
+        println("Diretorio: ${buildZip.name}")
+        println("Arquivos para teste rapido.")
     }
 }

@@ -84,30 +84,27 @@ call "%APP_HOME%\brproject-menu.bat"
 goto end
 )
 if /i "%~1"=="br-compile" (
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain jar compileJava compileKotlin
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain PrepararTeste jar compileJava compileKotlin
 goto end
 )
 if /i "%~1"=="br-compile-clean" (
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain clean jar compileJava compileKotlin
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain clean PrepararTeste jar compileJava compileKotlin
 goto end
 )
 if /i "%~1"=="br-ant-dist-test" (
-pushd "%APP_HOME%"
+    "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain PrepararTeste
 
-@rem # STREAMING_CHUNK:Running ant dist-test
-echo Executando ant dist-test...
-call ant -f Mount.xml dist-test
-
-@rem Verifica se o comando ant falhou. Se falhar, não tenta abrir os servidores.
-if %ERRORLEVEL% neq 0 (
-echo.
-echo Falha ao executar ant -f Mount.xml dist-test. Servidores nao serao iniciados.
-popd
-goto fail
+    @rem Verifica se a task do Gradle falhou. Se falhar, nao tenta abrir os servidores.
+    if errorlevel 1 (
+        echo.
+        echo [ERRO] Falha ao executar a task PrepararTeste no Gradle. Servidores nao serao iniciados.
+        popd
+        goto fail
+    )
 )
 
 echo.
-echo Ant dist-test concluido com sucesso.
+echo Preparar Teste.
 
 @rem # STREAMING_CHUNK:Starting Login Server
 echo Iniciando StartLogin_SemDashboard.bat...
