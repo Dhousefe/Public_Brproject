@@ -11,7 +11,8 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.gui;
@@ -81,25 +82,16 @@ public class ConfigGS {
     private record ModFileConfig(String label, Path path, String key) {}
 
     private static final List<ModFileConfig> MODS_CONFIG_MAP = List.of(
-        //new ModFileConfig("Agathions", Paths.get("game", "data", "custom", "mods", "agathionList.xml"), "enabled"),
         new ModFileConfig("Announce Boss HP %", Paths.get("game", "data", "custom", "mods", "bossHpAnnounce.xml"), "enabled"),
         new ModFileConfig("Announce Raid Drop", Paths.get("game", "data", "custom", "mods", "raid_drop_announce.xml"), "enabled"),
         new ModFileConfig("Battle Boss Event", Paths.get("game", "data", "custom", "mods", "battleboss.xml"), "enabled"),
         new ModFileConfig("Capsule Box", Paths.get("game", "data", "xml", "CapsuleBox.xml"), "enabled"),
-        //new ModFileConfig("Dress Me", Paths.get("game", "data", "custom", "mods", "DressMeData.xml"), "enabled"),
-        //new ModFileConfig("Dungeons Event", Paths.get("game", "data", "custom", "mods", "dungeon_event.xml"), "enabled"),
         new ModFileConfig("Equips Grade Restrictions", Paths.get("game", "data", "custom", "mods", "equip_grade_restrictions.xml"), "enabled"),
         new ModFileConfig("Global Drop", Paths.get("game", "data", "custom", "mods", "global_drop.xml"), "enable"),
-        //new ModFileConfig("Kamaloka Dungeon", Paths.get("game", "data", "custom", "mods", "kamaloka_dungeon.xml"), "enabled"),
-        //new ModFileConfig("Missions Mode", Paths.get("game", "data", "custom", "mods", "missions.xml"), "enabled"),
         new ModFileConfig("Olly Restrictions Mode", Paths.get("game", "data", "custom", "mods", "olympiad_enchant_config.xml"), "enabled"),
-        //new ModFileConfig("PC Cafe", Paths.get("game", "data", "custom", "mods", "pcCafe.xml"), "enabled"),
         new ModFileConfig("Player God Mode", Paths.get("game", "data", "custom", "mods", "PlayerGOD.xml"), "enabled"),
         new ModFileConfig("PVP Colors Sistem", Paths.get("game", "data", "custom", "mods", "pvpSystem.xml"), "enabled"),
-        //new ModFileConfig("Quets Customs Mode", Paths.get("game", "data", "custom", "mods", "quests.xml"), "enabled"),
         new ModFileConfig("Random Farm Zone", Paths.get("game", "data", "custom", "mods", "random_event.xml"), "enable"),
-        //new ModFileConfig("Rates Settings", Paths.get("game", "data", "custom", "mods", "rates.xml"), "enabled"),
-        //new ModFileConfig("Roullete", Paths.get("game", "data", "custom", "mods", "roulette.xml"), "enabled"),
         new ModFileConfig("Sell Buff Mode", Paths.get("game", "config", "mods.properties"), "BuffShopEnabled"),
         new ModFileConfig("Summon Mob Item", Paths.get("game", "data", "custom", "mods", "SummonMobItem.xml"), "enabled"),
         new ModFileConfig("Tournament Event Mode", Paths.get("game", "data", "custom", "mods", "tourBattle.xml"), "enabled")

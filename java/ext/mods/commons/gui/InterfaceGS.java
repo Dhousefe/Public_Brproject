@@ -11,7 +11,8 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.gui;
@@ -215,7 +216,6 @@ public class InterfaceGS {
         mnBalance.add(createMenuItem("Damage", 13, e -> new DamageBalanceFrame().setVisible(true))); 
         mnBalance.add(createMenuItem("Defence", 13, e -> new DefenceBalanceFrame().setVisible(true))); 
         mnBalance.add(createMenuItem("Vulnerability", 13, e -> new VulnerabilityBalanceFrame().setVisible(true))); 
-        //mnBalance.add(createMenuItem("Monsters Moviment", 13, e -> new InterfaceMovementTuner().setVisible(true)));
         
         final JMenu mnAnnounce = createMenu("Announce", 13); 
         mnAnnounce.add(createMenuItem("Normal", 13, e -> ServerActions.normalAnnounce(frame))); 

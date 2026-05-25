@@ -11,7 +11,8 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
+* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.gui.services;
@@ -31,12 +32,22 @@ import ext.mods.commons.gui.ThemeManager;
 import ext.mods.commons.util.JvmOptimizer;
 
 public class ProcessManagerService {
-
-    private static final String JAVA_25_PATH = "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.1.8-hotspot\\bin\\java.exe";
     
     private static final Preferences prefs = Preferences.userRoot().node("ram_allocation_settings");
 
     public ProcessManagerService() {
+    }
+
+    private String getJavaExecutable() {
+        String ext = System.getProperty("os.name").toLowerCase().contains("win") ? ".exe" : "";
+        
+        String javaHome = System.getenv("JAVA_HOME");
+        if (javaHome != null && !javaHome.trim().isEmpty()) {
+            return javaHome + File.separator + "bin" + File.separator + "java" + ext;
+        }
+
+        System.err.println("[AVISO] Variável de ambiente JAVA_HOME não encontrada. Usando java.home embutido.");
+        return System.getProperty("java.home") + File.separator + "bin" + File.separator + "java" + ext;
     }
 
     public void iniciarProcesso(String tipo, String licenseKey, String userEmail, boolean isLightModeEnabled, JFrame frame) {
@@ -53,10 +64,11 @@ public class ProcessManagerService {
         System.out.println("============================================================");
         System.out.println("  Memoria JVM: Xms=" + memoryMB + "MB | Xmx=" + memoryMB + "MB");
         
-        String caminhoJava = JAVA_25_PATH;
+        String caminhoJava = getJavaExecutable();
+
         if (!new File(caminhoJava).exists()) {
-            System.err.println("[AVISO] Java 25 fixo nao encontrado. Tentando variavel do sistema.");
-            caminhoJava = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+            System.err.println("[AVISO] Caminho exato do Java não encontrado: " + caminhoJava + ". Tentando executar comando global 'java'.");
+            caminhoJava = "java";
         }
 
         File diretorioExecucao = tipo.equals("gameserver") ? new File("game") : new File("login");
@@ -66,7 +78,7 @@ public class ProcessManagerService {
             return;
         }
 
-        StringBuilder cp = new StringBuilder();
+        /*StringBuilder cp = new StringBuilder();
         String sep = File.separator;
         cp.append(".").append(File.pathSeparator);
         try
@@ -81,7 +93,17 @@ public class ProcessManagerService {
         }
         cp.append(File.pathSeparator).append("..").append(sep).append("bin"); 
         cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes");
-        cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes").append(sep).append("java").append(sep).append("main");
+        cp.append(File.pathSeparator).append("..").append(sep).append("build").append(sep).append("classes").append(sep).append("java").append(sep).append("main");*/
+
+        String cpString = "";
+        try {
+            final File libsDir = new File(diretorioExecucao, "../libs").getCanonicalFile();
+            cpString = JvmOptimizer.buildRuntimeClasspath(libsDir); 
+        } catch (Exception e) {
+            System.err.println("[AVISO] Classpath ordenado falhou, usando libs/*: " + e.getMessage());
+            cpString = ".." + File.separator + "libs" + File.separator + "*"; 
+        }
+        
 
         String mainClass = tipo.equals("gameserver") ? "ext.mods.gameserver.GameServer" : "ext.mods.loginserver.LoginServer";
 
@@ -98,15 +120,21 @@ public class ProcessManagerService {
             command.add("-Dbrproject.safe.graphics=true");
         }
         
-        try {
-            final boolean useZgc = tipo.equalsIgnoreCase("gameserver");
-            command.addAll(JvmOptimizer.getRecommendedJvmFlags(useZgc, false));
-        } catch (Throwable t) {
-            System.err.println("[AVISO] Falha ao aplicar flags do JvmOptimizer: " + t.getMessage());
-        }
+        command.add("-XX:+UseG1GC");
+        command.add("-XX:MaxGCPauseMillis=200");
+        command.add("-XX:G1HeapRegionSize=16m");
+        command.add("-XX:+UseStringDeduplication");
+        command.add("-XX:+UseCompressedOops");
+        command.add("-XX:+UseCompactObjectHeaders");
+        command.add("-XX:+TieredCompilation");
+        command.add("-XX:TieredStopAtLevel=4");
+        
+        command.add("-XX:+AutoCreateSharedArchive");
+        command.add("-XX:SharedArchiveFile=cache/brproject_cds.jsa");
+        command.add("-Xlog:cds=error");
 
         command.add("-cp");
-        command.add(cp.toString());
+        command.add(cpString);
         command.add(mainClass);
         
         if (tipo.equals("gameserver")) {
