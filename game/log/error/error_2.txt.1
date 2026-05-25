@@ -1,0 +1,43 @@
+out. 25, 2025 4:14:50 PM ext.mods.commons.data.xml.IXmlReader parseFile
+WARNING: Could not parse file: data\xml\spawnlist\20_17.zip at line: 1, column: 1 :
+org.xml.sax.SAXParseException; systemId: file:/D:/Att_Brproject/Brproject_Distribution/game/data/xml/spawnlist/20_17.zip; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:178)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:978)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:114)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:247)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
+	at java.xml/javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:206)
+	at ext.mods.commons.data.xml.IXmlReader.parseFile(IXmlReader.java:111)
+	at ext.mods.commons.data.xml.IXmlReader.lambda$parseFile$0(IXmlReader.java:89)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at ext.mods.commons.data.xml.IXmlReader.parseFile(IXmlReader.java:89)
+	at ext.mods.commons.data.xml.IXmlReader.parseDataFile(IXmlReader.java:55)
+	at ext.mods.gameserver.data.manager.SpawnManager.load(SpawnManager.java:83)
+	at ext.mods.gameserver.data.manager.SpawnManager.<init>(SpawnManager.java:74)
+	at ext.mods.gameserver.data.manager.SpawnManager$SingletonHolder.<clinit>(SpawnManager.java:1019)
+	at ext.mods.gameserver.data.manager.SpawnManager.getInstance(SpawnManager.java:1014)
+	at ext.mods.gameserver.GameServer.<init>(GameServer.java:414)
+	at ext.mods.gameserver.GameServer.main(GameServer.java:171)
+
+out. 25, 2025 4:15:56 PM ext.mods.gameserver.GameServer <init>
+SEVERE: Failed to open server socket.
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:565)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:81)
+	at ext.mods.commons.mmocore.SelectorThread.openServerSocket(SelectorThread.java:92)
+	at ext.mods.gameserver.GameServer.<init>(GameServer.java:502)
+	at ext.mods.gameserver.GameServer.main(GameServer.java:171)
+

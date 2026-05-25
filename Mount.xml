@@ -446,12 +446,8 @@
 		<echo message="Removendo caches AppCDS (game/login)..." />
 		<delete dir="game/cache" failonerror="false" quiet="true" />
 		<delete dir="login/cache" failonerror="false" quiet="true" />
-		<delete dir="game/log" failonerror="false" quiet="true" />
-		<delete dir="login/log" failonerror="false" quiet="true" />
 		<delete dir="${buildZip}/game/cache" failonerror="false" quiet="true" />
 		<delete dir="${buildZip}/login/cache" failonerror="false" quiet="true" />
-		<delete dir="${buildZip}/game/log" failonerror="false" quiet="true" />
-		<delete dir="${buildZip}/login/log" failonerror="false" quiet="true" />
 		
 		<!-- Remover arquivos pesados da distribuição existente -->
 		<echo message="Removendo arquivos pesados..." />

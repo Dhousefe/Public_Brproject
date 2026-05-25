@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.gameserver.model.actor.ai.type;
@@ -161,6 +160,12 @@ public class NpcAI<T extends Npc> extends CreatureAI<T>
         }
         
         if (weaponRange <= 200 && _actor.getMove() instanceof NpcMove npcMove) {
+            //if (npcMove.maintainMeleeSpacing(target, weaponRange)) {
+                //if (Config.DEBUG_MELEE_ATTACK) {
+                   // LOGGER.info("[MeleeDebug] thinkAttack: spacingMove npc={} target={}", _actor.getObjectId(), target.getObjectId());
+                //}
+                //return;
+            //}
         }
         
         
@@ -622,6 +627,12 @@ public class NpcAI<T extends Npc> extends CreatureAI<T>
                                 final Creature target = toDoDesire.getFinalTarget();
                                 if (target != null) {
                                     final int weaponRange = (int) _actor.getStatus().getPhysicalAttackRange();
+                                    //if (npcMove.maintainMeleeSpacing(target, weaponRange)) {
+                                        //if (Config.DEBUG_MELEE_ATTACK) {
+                                        //    LOGGER.info("[MeleeDebug] runAI: spacingMove npc={} target={}", _actor.getObjectId(), target.getObjectId());
+                                        //}
+                                        //return;
+                                    //}
                                 }
                             }
                             if (toDoDesire.getType() == IntentionType.ATTACK && (_lastDesire == null || (_lastDesire.getType() == IntentionType.WANDER || _lastDesire.getType() == IntentionType.IDLE)))

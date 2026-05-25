@@ -179,6 +179,7 @@ import ext.mods.sellBuffEngine.BuffShopConfigs
 import ext.mods.sellBuffEngine.BuffShopManager
 import ext.mods.summonmobitem.SummonMobItemData
 import ext.mods.tour.TourData
+//import ext.mods.util.CryptaManager
 import ext.mods.Crypta.BattleBossData
 import ext.mods.Crypta.AgathionData
 import ext.mods.Crypta.RandomManager
@@ -287,6 +288,7 @@ class GameServer : Runnable {
             DonateData.getInstance()
             MissionData.getInstance()
             PvPData.getInstance()
+            //CryptaManager.executeMethod("AgathionData", "getInstance")
             AgathionData.getInstance()
             PolymorphData.getInstance()
             RaidDropAnnounceData.getInstance()
@@ -316,6 +318,7 @@ class GameServer : Runnable {
                 LOGGER.error("Failed to initialize Buff Shop System: " + e.message)
             }
             QuestData.getInstance()
+            //CryptaManager.executeMethod("BattleBossData", "getInstance")
             BattleBossData.getInstance()
             BattleBossCountDownTask.getInstance().start()
             StringUtil.printSection("[Brproject Ext Mods]")
@@ -618,6 +621,7 @@ class GameServer : Runnable {
     }
     private fun loadCustomMods() {
         customMods()
+        //CryptaManager.initialize()
     }
     private fun loadHandlers() {
         LOGGER.info("Loaded ${AdminCommandHandler.getInstance().size()} admin handlers.")

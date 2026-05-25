@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.gui.services;
@@ -32,24 +31,12 @@ import ext.mods.commons.gui.ThemeManager;
 import ext.mods.commons.util.JvmOptimizer;
 
 public class ProcessManagerService {
+
+    private static final String JAVA_25_PATH = "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.1.8-hotspot\\bin\\java.exe";
     
     private static final Preferences prefs = Preferences.userRoot().node("ram_allocation_settings");
 
     public ProcessManagerService() {
-    }
-
-    private String getJavaExecutable() {
-        String ext = System.getProperty("os.name").toLowerCase().contains("win") ? ".exe" : "";
-        
-        // 1º Tentativa: Usar a variável de ambiente JAVA_HOME do sistema operacional
-        String javaHome = System.getenv("JAVA_HOME");
-        if (javaHome != null && !javaHome.trim().isEmpty()) {
-            return javaHome + File.separator + "bin" + File.separator + "java" + ext;
-        }
-
-        // 2º Tentativa (Fallback): Usar o diretório do Java que está rodando este próprio painel/launcher
-        System.err.println("[AVISO] Variável de ambiente JAVA_HOME não encontrada. Usando java.home embutido.");
-        return System.getProperty("java.home") + File.separator + "bin" + File.separator + "java" + ext;
     }
 
     public void iniciarProcesso(String tipo, String licenseKey, String userEmail, boolean isLightModeEnabled, JFrame frame) {
@@ -66,13 +53,10 @@ public class ProcessManagerService {
         System.out.println("============================================================");
         System.out.println("  Memoria JVM: Xms=" + memoryMB + "MB | Xmx=" + memoryMB + "MB");
         
-        String caminhoJava = getJavaExecutable();
-
+        String caminhoJava = JAVA_25_PATH;
         if (!new File(caminhoJava).exists()) {
-            // Se mesmo com os fallbacks o arquivo não existir fisicamente, tentamos rodar apenas "java" 
-            // e confiar que o executável está injetado diretamente na variável PATH do Windows/Linux.
-            System.err.println("[AVISO] Caminho exato do Java não encontrado: " + caminhoJava + ". Tentando executar comando global 'java'.");
-            caminhoJava = "java";
+            System.err.println("[AVISO] Java 25 fixo nao encontrado. Tentando variavel do sistema.");
+            caminhoJava = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
         }
 
         File diretorioExecucao = tipo.equals("gameserver") ? new File("game") : new File("login");
@@ -104,7 +88,6 @@ public class ProcessManagerService {
         List<String> command = new ArrayList<>();
         command.add(caminhoJava);
         
-        // Memória parametrizada pela GUI
         command.add("-Xms" + memoryMB + "m");
         command.add("-Xmx" + memoryMB + "m");
         
@@ -115,21 +98,12 @@ public class ProcessManagerService {
             command.add("-Dbrproject.safe.graphics=true");
         }
         
-        // --- INÍCIO DAS FLAGS OTIMIZADAS DO INICIALIZADOR ---
-        command.add("-XX:+UseG1GC");
-        command.add("-XX:MaxGCPauseMillis=200");
-        command.add("-XX:G1HeapRegionSize=16m");
-        command.add("-XX:+UseStringDeduplication");
-        command.add("-XX:+UseCompressedOops");
-        command.add("-XX:+UseCompactObjectHeaders");
-        command.add("-XX:+TieredCompilation");
-        command.add("-XX:TieredStopAtLevel=4");
-        
-        // CDS Flags
-        command.add("-XX:+AutoCreateSharedArchive");
-        command.add("-XX:SharedArchiveFile=cache/brproject_cds.jsa");
-        command.add("-Xlog:cds=error");
-        // --- FIM DAS FLAGS OTIMIZADAS ---
+        try {
+            final boolean useZgc = tipo.equalsIgnoreCase("gameserver");
+            command.addAll(JvmOptimizer.getRecommendedJvmFlags(useZgc, false));
+        } catch (Throwable t) {
+            System.err.println("[AVISO] Falha ao aplicar flags do JvmOptimizer: " + t.getMessage());
+        }
 
         command.add("-cp");
         command.add(cp.toString());

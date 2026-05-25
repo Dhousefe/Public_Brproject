@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.data.xml;
@@ -25,7 +24,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import ext.mods.commons.data.StatSet;
+import ext.mods.commons.logging.CLogger;
+
+import ext.mods.Config;
+import ext.mods.gameserver.model.holder.IntIntHolder;
+import ext.mods.gameserver.model.location.Location;
+import ext.mods.gameserver.model.location.Point2D;
+import ext.mods.gameserver.model.location.SpawnLocation;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -44,16 +54,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-
-import ext.mods.Config;
-import ext.mods.commons.data.StatSet;
-import ext.mods.commons.logging.CLogger;
-import ext.mods.gameserver.model.holder.IntIntHolder;
-import ext.mods.gameserver.model.location.Location;
-import ext.mods.gameserver.model.location.Point2D;
-import ext.mods.gameserver.model.location.SpawnLocation;
-
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 public interface IXmlReader
 {
@@ -139,7 +139,7 @@ public interface IXmlReader
 	
 	default Boolean parseBoolean(Node node, Boolean defaultValue)
 	{
-		return node != null ? Boolean.parseBoolean(node.getNodeValue()) : defaultValue;
+		return node != null ? Boolean.valueOf(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Boolean parseBoolean(Node node)
@@ -159,7 +159,7 @@ public interface IXmlReader
 	
 	default Byte parseByte(Node node, Byte defaultValue)
 	{
-		return node != null ? Byte.parseByte(node.getNodeValue()) : defaultValue;
+		return node != null ? Byte.decode(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Byte parseByte(Node node)
@@ -179,7 +179,7 @@ public interface IXmlReader
 	
 	default Short parseShort(Node node, Short defaultValue)
 	{
-		return node != null ? Short.parseShort(node.getNodeValue()) : defaultValue;
+		return node != null ? Short.decode(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Short parseShort(Node node)
@@ -199,7 +199,7 @@ public interface IXmlReader
 	
 	default int parseInt(Node node, Integer defaultValue)
 	{
-		return node != null ? Integer.parseInt(node.getNodeValue()) : defaultValue;
+		return node != null ? Integer.decode(node.getNodeValue()) : defaultValue;
 	}
 	
 	default int parseInt(Node node)
@@ -209,7 +209,7 @@ public interface IXmlReader
 	
 	default Integer parseInteger(Node node, Integer defaultValue)
 	{
-		return node != null ? Integer.valueOf(node.getNodeValue()) : defaultValue;
+		return node != null ? Integer.decode(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Integer parseInteger(Node node)
@@ -240,7 +240,7 @@ public interface IXmlReader
 	
 	default Long parseLong(Node node, Long defaultValue)
 	{
-		return node != null ? Long.parseLong(node.getNodeValue()) : defaultValue;
+		return node != null ? Long.decode(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Long parseLong(Node node)
@@ -260,7 +260,7 @@ public interface IXmlReader
 	
 	default Float parseFloat(Node node, Float defaultValue)
 	{
-		return node != null ? Float.parseFloat(node.getNodeValue()) : defaultValue;
+		return node != null ? Float.valueOf(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Float parseFloat(Node node)
@@ -280,7 +280,7 @@ public interface IXmlReader
 	
 	default Double parseDouble(Node node, Double defaultValue)
 	{
-		return node != null ? Double.parseDouble(node.getNodeValue()) : defaultValue;
+		return node != null ? Double.valueOf(node.getNodeValue()) : defaultValue;
 	}
 	
 	default Double parseDouble(Node node)
@@ -369,15 +369,8 @@ public interface IXmlReader
 		if (node == null)
 			return null;
 		
-		final String val = node.getNodeValue();
-		final int p1 = val.indexOf(';');
-		final int p2 = val.indexOf(';', p1 + 1);
-		
-		return new Location(
-			Integer.parseInt(val.substring(0, p1)),
-			Integer.parseInt(val.substring(p1 + 1, p2)),
-			Integer.parseInt(val.substring(p2 + 1))
-		);
+		final int[] coords = Arrays.stream(node.getNodeValue().split(";")).mapToInt(Integer::parseInt).toArray();
+		return new Location(coords[0], coords[1], coords[2]);
 	}
 	
 	default SpawnLocation parseSpawnLocation(NamedNodeMap attrs, String name)
@@ -386,17 +379,8 @@ public interface IXmlReader
 		if (node == null)
 			return null;
 		
-		final String val = node.getNodeValue();
-		final int p1 = val.indexOf(';');
-		final int p2 = val.indexOf(';', p1 + 1);
-		final int p3 = val.indexOf(';', p2 + 1);
-		
-		return new SpawnLocation(
-			Integer.parseInt(val.substring(0, p1)),
-			Integer.parseInt(val.substring(p1 + 1, p2)),
-			Integer.parseInt(val.substring(p2 + 1, p3)),
-			Integer.parseInt(val.substring(p3 + 1))
-		);
+		final int[] coords = Arrays.stream(node.getNodeValue().split(";")).mapToInt(Integer::parseInt).toArray();
+		return new SpawnLocation(coords[0], coords[1], coords[2], coords[3]);
 	}
 	
 	default IntIntHolder parseIntIntHolder(NamedNodeMap attrs, String name)
@@ -405,13 +389,8 @@ public interface IXmlReader
 		if (node == null)
 			return null;
 		
-		final String val = node.getNodeValue();
-		final int p1 = val.indexOf(';');
-		
-		return new IntIntHolder(
-			Integer.parseInt(val.substring(0, p1)),
-			Integer.parseInt(val.substring(p1 + 1))
-		);
+		final int[] values = Arrays.stream(node.getNodeValue().split(";")).mapToInt(Integer::parseInt).toArray();
+		return new IntIntHolder(values[0], values[1]);
 	}
 	
 	default StatSet parseAttributes(Node node)
@@ -437,11 +416,9 @@ public interface IXmlReader
 	
 	default Map<String, Object> parseParameters(Node n)
 	{
-		final Map<String, Object> parameters = new Object2ObjectOpenHashMap<>();
+		final Map<String, Object> parameters = new HashMap<>();
 		for (Node parameters_node = n.getFirstChild(); parameters_node != null; parameters_node = parameters_node.getNextSibling())
 		{
-			if (parameters_node.getNodeType() != Node.ELEMENT_NODE) continue;
-			
 			NamedNodeMap attrs = parameters_node.getAttributes();
 			switch (parameters_node.getNodeName().toLowerCase())
 			{
@@ -464,22 +441,22 @@ public interface IXmlReader
 	default Location parseLocation(Node n)
 	{
 		final NamedNodeMap attrs = n.getAttributes();
-		return new Location(
-			parseInt(attrs.getNamedItem("x"), 0),
-			parseInt(attrs.getNamedItem("y"), 0),
-			parseInt(attrs.getNamedItem("z"), 0)
-		);
+		final int x = parseInteger(attrs, "x");
+		final int y = parseInteger(attrs, "y");
+		final int z = parseInteger(attrs, "z");
+		
+		return new Location(x, y, z);
 	}
 	
 	default SpawnLocation parseSpawnLocation(Node n)
 	{
 		final NamedNodeMap attrs = n.getAttributes();
-		return new SpawnLocation(
-			parseInt(attrs.getNamedItem("x"), 0),
-			parseInt(attrs.getNamedItem("y"), 0),
-			parseInt(attrs.getNamedItem("z"), 0),
-			parseInt(attrs.getNamedItem("heading"), 0)
-		);
+		final int x = parseInteger(attrs, "x");
+		final int y = parseInteger(attrs, "y");
+		final int z = parseInteger(attrs, "z");
+		final int heading = parseInteger(attrs, "heading", 0);
+		
+		return new SpawnLocation(x, y, z, heading);
 	}
 	
 	default void forEach(Node node, Consumer<Node> action)
@@ -489,17 +466,19 @@ public interface IXmlReader
 	
 	default void forEach(Node node, String nodeName, Consumer<Node> action)
 	{
-		final String[] targetNames = nodeName.indexOf('|') != -1 ? nodeName.split("\\|") : new String[]{nodeName};
-		
 		forEach(node, innerNode ->
 		{
-			final String innerName = innerNode.getNodeName();
-			for (String name : targetNames)
+			if (nodeName.contains("|"))
 			{
-				if (name.equals(innerName))
-					return true;
+				final String[] nodeNames = nodeName.split("\\|");
+				for (String name : nodeNames)
+				{
+					if (!name.isEmpty() && name.equals(innerNode.getNodeName()))
+						return true;
+				}
+				return false;
 			}
-			return false;
+			return nodeName.equals(innerNode.getNodeName());
 		}, action);
 	}
 	
@@ -509,7 +488,7 @@ public interface IXmlReader
 		for (int i = 0; i < list.getLength(); i++)
 		{
 			final Node targetNode = list.item(i);
-			if (targetNode.getNodeType() == Node.ELEMENT_NODE && filter.test(targetNode))
+			if (filter.test(targetNode))
 				action.accept(targetNode);
 		}
 	}

@@ -117,7 +117,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     
     // Fast Collections (FastUtil)
-    implementation("it.unimi.dsi:fastutil-core:8.5.18")
+    implementation("it.unimi.dsi:fastutil:8.5.13")
     
     
     

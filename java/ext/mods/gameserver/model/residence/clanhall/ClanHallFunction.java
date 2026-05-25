@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.gameserver.model.residence.clanhall;
@@ -80,6 +79,7 @@ public class ClanHallFunction
         if (_ch.isFree())
             return;
             
+        // PROTEÇÃO
         if (_rate <= 0)
         {
             LOGGER.warn("ClanHall: Hall ID " + _ch.getId() + " has an invalid rate (" + _rate + "ms) for function type " + _type + ". Task cancelled to prevent DB spam.");
@@ -219,6 +219,7 @@ public class ClanHallFunction
         
         dbSave();
         
+        // PROTEÇÃO
         if (_rate > 0)
         {
             _feeTask = ThreadPool.scheduleIO(this::payFunctionFee, getRate());

@@ -1,0 +1,233 @@
+[26-12-2025 20:18:33]	INFO	--------------------------------------------------=[ Config ]
+[26-12-2025 20:18:33]	INFO	Loading gameserver configuration files.
+[26-12-2025 20:18:33]	INFO	Loaded 1155 Filter Words.
+[26-12-2025 20:18:33]	INFO	UpgradeBossJewelsEnchant: true
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6656, enchantLevel=10, newItemId=15000
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15000, enchantLevel=15, newItemId=15001
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6657, enchantLevel=10, newItemId=15002
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15002, enchantLevel=15, newItemId=15003
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6658, enchantLevel=10, newItemId=15004
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15004, enchantLevel=15, newItemId=15005
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6659, enchantLevel=10, newItemId=15006
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15006, enchantLevel=15, newItemId=15007
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6660, enchantLevel=10, newItemId=15008
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15008, enchantLevel=15, newItemId=15009
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6661, enchantLevel=10, newItemId=15010
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15010, enchantLevel=15, newItemId=15011
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=6662, enchantLevel=10, newItemId=15012
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15012, enchantLevel=15, newItemId=15013
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=8191, enchantLevel=10, newItemId=15014
+[26-12-2025 20:18:33]	INFO	Loaded JewelUpgrade: itemId=15014, enchantLevel=15, newItemId=15015
+[26-12-2025 20:18:33]	INFO	Loaded 16 boss jewel upgrades.
+[26-12-2025 20:18:33]	INFO	Loaded 16 upgradeable boss jewels.
+[26-12-2025 20:18:33]	INFO	-------------------------------------------------=[ Poolers ]
+[26-12-2025 20:18:34]	INFO	Initializing ConnectionPool.
+[26-12-2025 20:18:34]	INFO	Virtual Thread Executor inicializado
+[26-12-2025 20:18:34]	INFO	=== Inicializado ===
+[26-12-2025 20:18:34]	INFO	  - Scheduled Pools: 32 (Platform Threads)
+[26-12-2025 20:18:34]	INFO	  - Instant Pools: 16 (Max: 32)
+[26-12-2025 20:18:34]	INFO	  - Virtual Thread Executor: Ativo (I/O-bound tasks)
+[26-12-2025 20:18:34]	INFO	  - Pathfinding Threads: 4 (CPU-bound)
+[26-12-2025 20:18:34]	INFO	  - JVM: 25.0.1
+[26-12-2025 20:18:34]	INFO	-----------------------------------------------=[ IdFactory ]
+[26-12-2025 20:18:34]	INFO	Updated characters online status.
+[26-12-2025 20:18:34]	INFO	Cleaned 0 elements from database.
+[26-12-2025 20:18:34]	INFO	Cleaned 0 expired timestamps from database.
+[26-12-2025 20:18:34]	INFO	Initializing 102912 objectIds pool, with 117 used ids.
+[26-12-2025 20:18:34]	INFO	---------------------------------------------------=[ Cache ]
+[26-12-2025 20:18:34]	INFO	World grid (176 by 256) is now set up.
+[26-12-2025 20:18:40]	INFO	Loaded 0 crests.
+[26-12-2025 20:18:40]	INFO	---------------------------------------------------=[ World ]
+[26-12-2025 20:18:41]	INFO	Loaded 1 announcements.
+[26-12-2025 20:18:41]	INFO	Loaded 2 server variables.
+[26-12-2025 20:18:41]	INFO	--------------------------------------------------=[ Skills ]
+[26-12-2025 20:18:42]	INFO	SkillTable: Loaded 29743 skills.
+[26-12-2025 20:18:42]	INFO	Loaded 117 fishing skills.
+[26-12-2025 20:18:42]	INFO	Loaded 64 clan skills.
+[26-12-2025 20:18:42]	INFO	Loaded 14550 enchant skills.
+[26-12-2025 20:18:42]	INFO	---------------------------------------------------=[ Items ]
+[26-12-2025 20:18:42]	INFO	Loaded items.
+[26-12-2025 20:18:42]	INFO	Loaded 13 summon items.
+[26-12-2025 20:18:42]	INFO	Loaded 180 hennas.
+[26-12-2025 20:18:42]	INFO	Loaded 678 buyLists.
+[26-12-2025 20:18:43]	INFO	Loaded 115 multisell.
+[26-12-2025 20:18:43]	INFO	Loaded 871 recipes.
+[26-12-2025 20:18:43]	INFO	Loaded 51 armor sets.
+[26-12-2025 20:18:43]	INFO	Loaded 278 fish.
+[26-12-2025 20:18:43]	INFO	Loaded 334 spellbooks.
+[26-12-2025 20:18:43]	INFO	Loaded 39 Soul Crystals data and 124 NPCs data.
+[26-12-2025 20:18:43]	INFO	Loaded 4 sets of augmentation stats.
+[26-12-2025 20:18:43]	INFO	Loaded 170 blue, 1070 purple and 540 red Life-Stone skills.
+[26-12-2025 20:18:43]	INFO	Loaded 2 cursed weapons.
+[26-12-2025 20:18:43]	WARNING	Skipping items list is disabled. No items will be loaded from this list.
+[26-12-2025 20:18:43]	INFO	--------------------------------------------------=[ Admins ]
+[26-12-2025 20:18:43]	INFO	Loaded 10 access levels.
+[26-12-2025 20:18:43]	INFO	Loaded 158 admin command rights.
+[26-12-2025 20:18:43]	INFO	Loaded 0 bookmarks.
+[26-12-2025 20:18:43]	INFO	Loaded 0 petitions.
+[26-12-2025 20:18:43]	INFO	----------------------------------------------=[ Characters ]
+[26-12-2025 20:18:43]	INFO	Loaded 89 player classes templates.
+[26-12-2025 20:18:43]	INFO	Loaded 3 player infos.
+[26-12-2025 20:18:43]	INFO	Loaded 81 player levels.
+[26-12-2025 20:18:43]	INFO	Loaded 0 RaidPoints entries.
+[26-12-2025 20:18:43]	INFO	Loaded 29 healSps entries.
+[26-12-2025 20:18:43]	INFO	Loaded 92 restart areas and 36 restart points.
+[26-12-2025 20:18:43]	INFO	----------------------------------------=[ Community server ]
+[26-12-2025 20:18:43]	INFO	Loaded custom community board.
+[26-12-2025 20:18:43]	INFO	---------------------------------------------------=[ Clans ]
+[26-12-2025 20:18:43]	INFO	Loaded 0 clans.
+[26-12-2025 20:18:43]	INFO	-----------------------------------=[ Geodata & Pathfinding ]
+[26-12-2025 20:18:48]	INFO	Loaded 139 L2OFF region files.
+[26-12-2025 20:18:48]	INFO	Pré-cálculo automático de rotas desabilitado
+[26-12-2025 20:18:48]	INFO	---------------------------------------------------=[ Zones ]
+[26-12-2025 20:18:56]	INFO	Loaded 26 zones classes and total 1067 zones.
+[26-12-2025 20:18:56]	INFO	---------------------------------------------------=[ Doors ]
+[26-12-2025 20:18:56]	INFO	Loaded 547 doors templates.
+[26-12-2025 20:18:56]	INFO	------------------------------------=[ Castles & Clan Halls ]
+[26-12-2025 20:18:57]	INFO	Loaded 9 castles.
+[26-12-2025 20:18:57]	INFO	Loaded 44 clan halls and 6 siegable clan halls.
+[26-12-2025 20:18:57]	INFO	-------------------------------------------=[ Task Managers ]
+[26-12-2025 20:18:57]	INFO	Restored 0 items on ground.
+[26-12-2025 20:18:57]	INFO	---------------------------------------------=[ Seven Signs ]
+[26-12-2025 20:18:57]	INFO	Currently on Competition (Quest Event) period.
+[26-12-2025 20:18:57]	INFO	The Seal of Avarice remains unclaimed.
+[26-12-2025 20:18:57]	INFO	The Seal of Gnosis remains unclaimed.
+[26-12-2025 20:18:57]	INFO	The Seal of Strife remains unclaimed.
+[26-12-2025 20:18:57]	INFO	Next Seven Signs period change set to Mon Dec 29 18:00:00 GMT-03:00 2025.
+[26-12-2025 20:18:57]	INFO	Next Seven Signs period begins in 2 days, 21 hours and 41 mins.
+[26-12-2025 20:18:57]	INFO	-------------------------------------------=[ Manor Manager ]
+[26-12-2025 20:18:57]	INFO	Loaded 124 manor areas.
+[26-12-2025 20:18:57]	INFO	Loaded 246 seeds.
+[26-12-2025 20:18:57]	INFO	----------------------------------------------------=[ NPCs ]
+[26-12-2025 20:18:57]	INFO	Loaded 77 available buffs.
+[26-12-2025 20:18:57]	INFO	Loaded 2 ready to use schemes.
+[26-12-2025 20:19:00]	INFO	Loaded 6548 NPC templates.
+[26-12-2025 20:19:00]	INFO	Loaded 166 walking routes.
+[26-12-2025 20:19:00]	INFO	Loaded 29 static objects.
+[26-12-2025 20:19:00]	INFO	Loaded 205 spawn data.
+[26-12-2025 20:19:04]	INFO	Loaded 9544 territories.
+[26-12-2025 20:19:04]	INFO	Loaded 9907 NPC makers.
+[26-12-2025 20:19:04]	INFO	Loaded 14 newbie buffs.
+[26-12-2025 20:19:04]	INFO	Loaded 73 instant teleport positions.
+[26-12-2025 20:19:04]	INFO	Loaded 118 teleport positions.
+[26-12-2025 20:19:04]	INFO	Loaded 0 polymorph templates.
+[26-12-2025 20:19:04]	INFO	Loaded 13 observer groups and 25 spawns.
+[26-12-2025 20:19:04]	INFO	--------------------------------------=[ Olympiads & Heroes ]
+[26-12-2025 20:19:04]	INFO	Loaded 21 stadiums.
+[26-12-2025 20:19:04]	INFO	8140 minutes until Olympiad period ends.
+[26-12-2025 20:19:04]	INFO	Next weekly Olympiad change is in 5039 minutes.
+[26-12-2025 20:19:04]	INFO	Loaded 0 nobles.
+[26-12-2025 20:19:04]	INFO	Olympiad competition period starts in 0 days, 0 hours and 0 mins.
+[26-12-2025 20:19:04]	INFO	Olympiad event starts/started @ Fri Dec 26 18:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:04]	INFO	Loaded 0 heroes and 0 all time heroes.
+[26-12-2025 20:19:04]	INFO	----------------------------------------=[ Quests & Scripts ]
+[26-12-2025 20:19:04]	INFO	Olympiad game started.
+[26-12-2025 20:19:05]	INFO	Bandit Stronghold siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Devastated Castle siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Fortress of Resistance siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Fortress of the Dead siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Rainbow Springs Chateau siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Wild Beast Reserve siege scheduled for Sun Dec 28 12:00:00 GMT-03:00 2025.
+[26-12-2025 20:19:05]	INFO	Loaded 886 regular scripts and 8 scheduled scripts.
+[26-12-2025 20:19:05]	INFO	Loaded 5 boat itineraries.
+[26-12-2025 20:19:05]	INFO	--------------------------------------------------=[ Events ]
+[26-12-2025 20:19:05]	INFO	Loaded 184 Derby Track records, currently on race #185.
+[26-12-2025 20:19:05]	INFO	--------------------------------------------------=[ Spawns ]
+[26-12-2025 20:19:05]	INFO	Loaded 0 raidboss static spawn.
+[26-12-2025 20:19:14]	INFO	Spawned 46865 NPCs.
+[26-12-2025 20:19:14]	INFO	Spawned 626 "extra_mob" NPCs.
+[26-12-2025 20:19:14]	INFO	Spawned 18 "18age" NPCs.
+[26-12-2025 20:19:14]	INFO	Spawned 12 "start_weapon" NPCs.
+[26-12-2025 20:19:14]	INFO	Spawned 3924 Seven Signs - Event NPCs.
+[26-12-2025 20:19:14]	INFO	--------------------------=[ Custom Mods: initialization... ]
+[26-12-2025 20:19:14]	INFO	RatesData: Loaded 80 rates.
+[26-12-2025 20:19:14]	INFO	Loaded 0 offline.
+[26-12-2025 20:19:15]	INFO	Loaded 0 couples.
+[26-12-2025 20:19:15]	INFO	Loaded 4 events.
+[26-12-2025 20:19:15]	INFO	Capture The Flag Engine: is disabled.
+[26-12-2025 20:19:15]	INFO	Deathmatch Engine: Engine is disabled.
+[26-12-2025 20:19:15]	INFO	Last Man Engine: Engine is disabled.
+[26-12-2025 20:19:15]	INFO	Team vs Team Engine: is disabled.
+[26-12-2025 20:19:15]	INFO	Loaded 30 enchant scroll data.
+[26-12-2025 20:19:15]	INFO	Loaded 11 pcCafe variables.
+[26-12-2025 20:19:15]	INFO	-------------------------------------=[ CapsuleBox - Terius ]
+[26-12-2025 20:19:15]	INFO	CapsuleBoxData: Loaded 5 items.
+[26-12-2025 20:19:15]	INFO	Loaded 0 auction items.
+[26-12-2025 20:19:15]	INFO	SellBuffsManager: Loaded 120 allowed buffs.
+[26-12-2025 20:19:15]	INFO	Loaded 22 Donate Service data.
+[26-12-2025 20:19:15]	INFO	Loaded 49 of 49 mission data.
+[26-12-2025 20:19:15]	WARNING	PvP System is disabled.
+[26-12-2025 20:19:15]	INFO	Loaded 5 battle boss events.
+[26-12-2025 20:19:15]	INFO	Loaded {22} Agathion list.
+[26-12-2025 20:19:15]	INFO	Loaded Global Drop config. Enabled: true | Drops: 2 | Ignored Monsters: 8
+[26-12-2025 20:19:15]	INFO	RaidDropAnnounceData: Loaded raid drop announce configuration.
+[26-12-2025 20:19:15]	INFO	EquipGradeRestrictionData: Loaded 4 grade restrictions.
+[26-12-2025 20:19:15]	INFO	BossHpAnnounceData: Loaded 2 boss HP announce configs.
+[26-12-2025 20:19:15]	INFO	Loaded 1 random events.
+[26-12-2025 20:19:15]	INFO	RandomEvent: Event checker started. Evento: [Farm Event]
+[26-12-2025 20:19:15]	INFO	Random Farm Mod Iniciado
+[26-12-2025 20:19:15]	INFO	Loaded 2 dungeons.
+[26-12-2025 20:19:15]	INFO	Loaded {29} roulette items.
+[26-12-2025 20:19:15]	INFO	Loaded PlayerGOD configuration.
+[26-12-2025 20:19:15]	INFO	Loaded {14} DressMe entries.
+[26-12-2025 20:19:15]	INFO	Loaded {1} Tournament battle.
+[26-12-2025 20:19:15]	INFO	Loaded 249 equipes.
+[26-12-2025 20:19:15]	INFO	Loaded {0} banned(s) Hwid(s)
+[26-12-2025 20:19:15]	INFO	Loaded {1} player(s) Hwid(s)
+[26-12-2025 20:19:15]	INFO	BuffShopManager: Sistema de Lojas de Buffs inicializado.
+[26-12-2025 20:19:15]	INFO	BuffShopManager: Agendando restauração de lojas de buffs offline...
+[26-12-2025 20:19:15]	INFO	BuffShopManager: Nenhuma loja de buffs offline para restaurar.
+[26-12-2025 20:19:15]	INFO	Loaded {2} quests.
+[26-12-2025 20:19:15]	WARNING	Nenhum evento encontrado.
+[26-12-2025 20:19:15]	INFO	------------------------------------=[ [Brproject Ext Mods] ]
+[26-12-2025 20:19:15]	INFO	[Interface_BrProject] Loaded 1 allowed multisells and teleport settings.
+[26-12-2025 20:19:15]	INFO	[Interface_BrProject] Loaded 169 interface teleport locations.
+[26-12-2025 20:19:15]	INFO	[Interface_BrProject] Carregado e registrado com sucesso.
+[26-12-2025 20:19:15]	INFO	[KamalokaInstancia] Configuracoes de Kamaloka carregadas recarregadas com sucesso.
+[26-12-2025 20:19:15]	INFO	[KamalokaInstancia] Cache de 65 status de NPCs originais foi criado.
+[26-12-2025 20:19:15]	INFO	[KamalokaInstancia] Carregado e ativado com sucesso.
+[26-12-2025 20:19:15]	INFO	------------------------------------------------=[ Handlers ]
+[26-12-2025 20:19:15]	INFO	Loaded 150 admin command handlers.
+[26-12-2025 20:19:15]	INFO	Loaded 26 bypass command handlers.
+[26-12-2025 20:19:15]	INFO	Loaded 13 chat handlers.
+[26-12-2025 20:19:16]	INFO	Loaded 54 item handlers.
+[26-12-2025 20:19:16]	INFO	Loaded 74 skill handlers.
+[26-12-2025 20:19:16]	INFO	Loaded 26 target handlers.
+[26-12-2025 20:19:16]	INFO	Loaded 17 user command handlers.
+[26-12-2025 20:19:16]	INFO	Loaded 64 voiced command handlers.
+[26-12-2025 20:19:16]	INFO	--------------------------------------------------=[ System ]
+[26-12-2025 20:19:16]	INFO	Gameserver has started, used memory: 1964 / 3098 Mo.
+[26-12-2025 20:19:16]	INFO	Maximum allowed players: 3000.
+[26-12-2025 20:19:16]	INFO	Server loaded in 42 seconds
+[26-12-2025 20:19:16]	INFO	---------------------------------------------------=[ Login ]
+[26-12-2025 20:19:16]	INFO	Connecting to login on 127.0.0.1:9014.
+[26-12-2025 20:19:16]	INFO	Registered as server: [1] Bartz.
+[26-12-2025 20:19:39]	INFO	HWID: [7B37], character: [Dev]
+[26-12-2025 20:29:30]	INFO	-----------------------------=[ Under shutting down process ]
+[26-12-2025 20:29:30]	INFO	Offline stored.
+[26-12-2025 20:29:30]	INFO	Players have been disconnected.
+[26-12-2025 20:29:30]	INFO	FestivalOfDarknessManager has been saved.
+[26-12-2025 20:29:30]	INFO	SevenSignsManager has been saved.
+[26-12-2025 20:29:30]	INFO	Running scripts have been stopped.
+[26-12-2025 20:29:30]	INFO	Saved boss zones data.
+[26-12-2025 20:29:30]	INFO	ZoneManager has been saved.
+[26-12-2025 20:29:30]	INFO	SpawnManager has been saved.
+[26-12-2025 20:29:30]	INFO	Olympiad has been saved.
+[26-12-2025 20:29:30]	INFO	HeroManager has been saved.
+[26-12-2025 20:29:30]	INFO	CastleManorManager has been saved.
+[26-12-2025 20:29:30]	INFO	FishingChampionshipManager has been saved.
+[26-12-2025 20:29:30]	INFO	BufferManager has been saved.
+[26-12-2025 20:29:30]	INFO	PetitionManager has been saved.
+[26-12-2025 20:29:30]	INFO	ClanHallManager has been saved.
+[26-12-2025 20:29:30]	INFO	RelationManager has been saved.
+[26-12-2025 20:29:30]	INFO	CoupleManager has been saved.
+[26-12-2025 20:29:30]	INFO	ItemInstanceTaskManager has been saved.
+[26-12-2025 20:29:30]	INFO	No items on ground to save.
+[26-12-2025 20:29:30]	INFO	ItemsOnGroundTaskManager has been saved.
+[26-12-2025 20:29:30]	INFO	PathfinderCache finalizado
+[26-12-2025 20:29:30]	INFO	PathfinderCache has been shut down.
+[26-12-2025 20:29:30]	INFO	Desligando CoroutinePool...
+[26-12-2025 20:29:30]	SEVERE	Erro ao agendar tarefa: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@6675794b[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@27487370[Wrapped task = ext.mods.commons.pool.RunnableWrapper@2377e341]] rejected from java.util.concurrent.ScheduledThreadPoolExecutor@388526fb[Shutting down, pool size = 12, active threads = 0, queued tasks = 0, completed tasks = 101911]
+[26-12-2025 20:29:30]	SEVERE	Erro ao agendar tarefa: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@36bb29d0[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@3c4342a0[Wrapped task = ext.mods.commons.pool.RunnableWrapper@3284bb58]] rejected from java.util.concurrent.ScheduledThreadPoolExecutor@7803bfd[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 101964]
+[26-12-2025 20:29:30]	INFO	CoroutinePool desligado.
+[26-12-2025 20:29:30]	INFO	ThreadPool has been shut down.

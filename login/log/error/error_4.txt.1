@@ -1,0 +1,15 @@
+dez. 08, 2025 6:39:28 PM ext.mods.loginserver.LoginServer <init>
+GRAVE: Failed to start the gameserver listener.
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:522)
+	at java.base/sun.nio.ch.Net.bind(Net.java:511)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:641)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:326)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:222)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:138)
+	at ext.mods.loginserver.FloodProtectedListener.<init>(FloodProtectedListener.java:25)
+	at ext.mods.loginserver.GameServerListener.<init>(GameServerListener.java:16)
+	at ext.mods.loginserver.LoginServer.<init>(LoginServer.java:173)
+	at ext.mods.loginserver.LoginServer.main(LoginServer.java:42)
+

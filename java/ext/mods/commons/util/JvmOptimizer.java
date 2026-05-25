@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.util;
@@ -634,6 +633,7 @@ public final class JvmOptimizer
 			
 			flags.add("-XX:+UseCompactObjectHeaders");
 			
+			// AppCDS (heap): apenas com G1GC. ZGC + CompactObjectHeaders desativa compressed oops.
 			if (!useZgc)
 			{
 				flags.add("-XX:+AutoCreateSharedArchive");
@@ -649,6 +649,7 @@ public final class JvmOptimizer
 				flags.add("-XX:+DebugNonSafepoints");
 			}
 			
+			// ZGC + CompactObjectHeaders desativa compressed oops; nao forcar +UseCompressedOops com ZGC (quebra AppCDS).
 			if (!useZgc)
 			{
 				flags.add("-XX:+UseCompressedOops");
@@ -739,6 +740,7 @@ public final class JvmOptimizer
 			return true;
 		if (fileName.endsWith(".encrypted"))
 			return true;
+		// Duplicatas antigas (build usa Kotlin 2.3.0-Beta2 + coroutines 1.9.0)
 		if ("kotlin-stdlib-2.0.0.jar".equalsIgnoreCase(fileName))
 			return true;
 		if ("kotlin-reflect-2.0.0.jar".equalsIgnoreCase(fileName))
@@ -1006,6 +1008,8 @@ public final class JvmOptimizer
 			if ((double) waste / committed < G1_RECLAIM_WASTE_RATIO)
 				return;
 			
+			//LOGGER.info("  [G1 Reclaim] Heap committed={}MB used={}MB | liberando ~{}MB ociosos",
+			//	committed / (1024 * 1024), used / (1024 * 1024), waste / (1024 * 1024));
 			
 			memoryBean.gc();
 		}

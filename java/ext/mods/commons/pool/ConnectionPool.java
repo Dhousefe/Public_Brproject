@@ -1,19 +1,18 @@
 /*
-* Copyleft © 2024-2026 L2Brproject
-* * This file is part of L2Brproject derived from aCis409/RusaCis3.8
-* * L2Brproject is free software: you can redistribute it and/or modify it
-* under the terms of the GNU General Public License as published by the
-* Free Software Foundation, either version 3 of the License.
-* * L2Brproject is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-* General Public License for more details.
-* * You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-* Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
-* as a contribution for the forum L2JBrasil.com
+ * Copyleft © 2024-2026 L2Brproject
+ * * This file is part of L2Brproject derived from aCis409/RusaCis3.8
+ * * L2Brproject is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License.
+ * * L2Brproject is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ * * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
+ * Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
+ * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.commons.pool;
 
@@ -39,7 +38,9 @@ public final class ConnectionPool {
     
     private static HikariDataSource _source;
     
+    // Configuração para ativar/desativar o debug das queries
     private static final boolean DEBUG_QUERIES = false; 
+    // Tempo em ms para considerar uma query "lenta" (se quiser logar só as lentas)
     private static final long SLOW_QUERY_THRESHOLD_MS = 50; 
     
     public static void init() {
@@ -120,6 +121,10 @@ public final class ConnectionPool {
         return String.format("HikariCP: %d queries total", TOTAL_QUERIES.get());
     }
 
+    // =========================================================================================
+    // WRAPPER DE DEBUG (Proxy Pattern)
+    // Intercepta as chamadas prepareStatement e createStatement para logar o SQL
+    // =========================================================================================
 
     private static Connection wrapConnection(final Connection realConnection) {
         return (Connection) Proxy.newProxyInstance(
@@ -132,6 +137,9 @@ public final class ConnectionPool {
 
                     if ("prepareStatement".equals(methodName) && args != null && args.length > 0) {
                         String sql = (String) args[0];
+                        // Você pode imprimir a stacktrace para saber de ONDE veio a query
+                        // StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+                        // LOGGER.info("QUERY PREPARED: " + sql + " | FROM: " + stack[3].getClassName() + "." + stack[3].getMethodName());
                         
                         LOGGER.info("QUERY PREPARED: " + sql);
                         
@@ -168,6 +176,8 @@ public final class ConnectionPool {
                             if (duration > SLOW_QUERY_THRESHOLD_MS) {
                                 LOGGER.warn("SLOW QUERY (" + duration + "ms): " + sql);
                             } else {
+                                // Se quiser logar o tempo de TODAS as queries, descomente abaixo:
+                                // LOGGER.info("EXECUTED (" + duration + "ms): " + sql);
                             }
                         }
                     }
