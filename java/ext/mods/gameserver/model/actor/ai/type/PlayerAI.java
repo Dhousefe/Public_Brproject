@@ -11,8 +11,7 @@
 * * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 * Our main Developers, Dhousefe-L2JBR, Agazes33, Ban-L2jDev, Warman, SrEli.
-* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, 
-* SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo, Tiagorosendo, Schuster, LucasStark, damedd
+* Our special thanks, Nattan Felipe, Diego Fonseca, Junin, ColdPlay, Denky, MecBew, Localhost, MundvayneHELLBOY, SonecaL2, Eduardo.SilvaL2J, biLL, xpower, xTech, kakuzo
 * as a contribution for the forum L2JBrasil.com
  */
 package ext.mods.gameserver.model.actor.ai.type;
@@ -985,7 +984,7 @@ public class PlayerAI extends PlayableAI<Player>
             {
                 if (Config.ENABLE_SMOOTH_OBSTACLE_AVOIDANCE)
                 {
-                    List<Location> smoothPath = SmoothObstacleAvoidance.getInstance().createSmoothPath(path, _actor, null);
+                    List<Location> smoothPath = SmoothObstacleAvoidance.getInstance().createSmoothPath(path, null);
                     if (smoothPath != null && !smoothPath.isEmpty())
                     {
                         path = smoothPath;
