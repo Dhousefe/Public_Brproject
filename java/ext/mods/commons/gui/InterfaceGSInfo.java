@@ -58,7 +58,7 @@ public class InterfaceGSInfo extends ModernUI.SectionPanel {
 
         add(Box.createVerticalStrut(5));
 
-        rowVersion  = addInfoRow("Version", "2.9.6");
+        rowVersion  = addInfoRow("Version", "2.9.7");
         rowJava     = addInfoRow("Build JDK", System.getProperty("java.version"));
         rowProtocol = addInfoRow("Hwid Protocol", "Loading...");
         rowPlayers  = addInfoRow("Online Players", "0");
