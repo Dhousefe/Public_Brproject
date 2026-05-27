@@ -98,7 +98,7 @@ public class AdminTest implements IAdminCommandHandler
 									player.sendMessage(targetPlayer.getName() + "'s " + quest.getName() + " quest condition set to " + cond);
 								}
 								else
-									player.sendMessage(targetPlayer.getName() + "'s " + quest.getName() + " quest has been created. To start it, use
+									player.sendMessage(targetPlayer.getName() + "'s " + quest.getName() + " quest has been created. To start it, use test startquest <questId> <cond>");
 							}
 							else
 								player.sendMessage("Invalid command format. Use //test setquest <questId> <cond>");
