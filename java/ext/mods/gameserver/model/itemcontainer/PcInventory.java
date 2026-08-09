@@ -24,6 +24,8 @@ import java.util.Objects;
 
 import ext.mods.commons.util.ArraysUtil;
 
+import ext.mods.dolls.DollsData;
+
 import ext.mods.gameserver.data.xml.ItemData;
 import ext.mods.gameserver.enums.Paperdoll;
 import ext.mods.gameserver.enums.ShortcutType;
@@ -370,6 +372,8 @@ public class PcInventory extends Inventory
 		else if (item.getItemId() == ANCIENT_ADENA_ID && !item.equals(_ancientAdena))
 			_ancientAdena = item;
 		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
+		
 		return item;
 	}
 	
@@ -385,6 +389,8 @@ public class PcInventory extends Inventory
 		else if (item.getItemId() == ANCIENT_ADENA_ID && !item.equals(_ancientAdena))
 			_ancientAdena = item;
 		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
+		
 		return item;
 	}
 	
@@ -392,6 +398,8 @@ public class PcInventory extends Inventory
 	public ItemInstance transferItem(int objectId, int count, ItemContainer target)
 	{
 		ItemInstance item = super.transferItem(objectId, count, target);
+		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
 		
 		if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId()))
 			_adena = null;
@@ -412,6 +420,8 @@ public class PcInventory extends Inventory
 	public ItemInstance destroyItem(ItemInstance item, int count)
 	{
 		item = super.destroyItem(item, count);
+		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
 		
 		if (_adena != null && _adena.getCount() <= 0)
 			_adena = null;
@@ -447,6 +457,8 @@ public class PcInventory extends Inventory
 	{
 		item = super.dropItem(item);
 		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
+		
 		if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId()))
 			_adena = null;
 		
@@ -460,6 +472,8 @@ public class PcInventory extends Inventory
 	public ItemInstance dropItem(int objectId, int count)
 	{
 		ItemInstance item = super.dropItem(objectId, count);
+		
+		DollsData.getInstance().getSkillDoll(getOwner(), item);
 		
 		if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId()))
 			_adena = null;

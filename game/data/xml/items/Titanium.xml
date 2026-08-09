@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<item id="9215" type="Armor" name="Titanium Helmet Heavy">
+		<set name="icon" val="icon.armor_cloth_helmet_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="head" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="268" />
+		<set name="material" val="BONE" />
+		<set name="weight" val="550" />
+		<set name="price" val="5370000" />
+		<for>
+			<baseadd stat="pDef" val="83" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+		<item id="9216" type="Armor" name="Titanium Body Heavy">
+		<set name="icon" val="icon.armor_t88_u_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="HEAVY" />
+		<set name="bodypart" val="chest" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="715" />
+		<set name="material" val="SCALE_OF_DRAGON" />
+		<set name="weight" val="7620" />
+		<set name="price" val="14300000" />
+		<for>
+			<baseadd stat="pDef" val="205" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9217" type="Armor" name="Titanium Pants">
+		<set name="icon" val="icon.armor_t1004_l_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="HEAVY" />
+		<set name="bodypart" val="legs" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="448" />
+		<set name="material" val="SCALE_OF_DRAGON" />
+		<set name="weight" val="3260" />
+		<set name="price" val="8960000" />
+		<for>
+			<baseadd stat="pDef" val="128" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9218" type="Armor" name="Titanium Gloves">
+		<set name="icon" val="icon.armor_t1004_g_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="gloves" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="540" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9219" type="Armor" name="Titanium Boots Heavy">
+		<set name="icon" val="icon.armor_t1004_b_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="feet" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="1110" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+
+
+		<item id="9220" type="Armor" name="Titanium Helmet Light">
+		<set name="icon" val="icon.armor_leather_helmet_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="head" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="268" />
+		<set name="material" val="BONE" />
+		<set name="weight" val="550" />
+		<set name="price" val="5370000" />
+		<for>
+			<baseadd stat="pDef" val="83" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+		<item id="9221" type="Armor" name="Titanium Body Light">
+		<set name="icon" val="icon.armor_t1005_u_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="HEAVY" />
+		<set name="bodypart" val="chest" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="715" />
+		<set name="material" val="SCALE_OF_DRAGON" />
+		<set name="weight" val="7620" />
+		<set name="price" val="14300000" />
+		<for>
+			<baseadd stat="pDef" val="205" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9222" type="Armor" name="Titanium Pants Light">
+		<set name="icon" val="icon.armor_t1005_l_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="HEAVY" />
+		<set name="bodypart" val="legs" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="448" />
+		<set name="material" val="SCALE_OF_DRAGON" />
+		<set name="weight" val="3260" />
+		<set name="price" val="8960000" />
+		<for>
+			<baseadd stat="pDef" val="128" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9223" type="Armor" name="Titanium Gloves Light">
+		<set name="icon" val="icon.armor_t1005_g_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="gloves" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="540" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+		<item id="9224" type="Armor" name="Titanium Boots Light">
+		<set name="icon" val="icon.armor_t1005_b_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="feet" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="1110" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+     <item id="9225" type="Armor" name="Titanium Helmet Robe">
+		<set name="icon" val="icon.armor_cloth_helmet_i00" />
+		<set name="default_action" val="equip" />
+		<set name="bodypart" val="head" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="268" />
+		<set name="material" val="BONE" />
+		<set name="weight" val="550" />
+		<set name="price" val="5370000" />
+		<for>
+			<baseadd stat="pDef" val="83" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9226" type="Armor" name="Titanium Body Robe">
+		<set name="icon" val="icon.armor_t1006_u_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="MAGIC" />
+		<set name="bodypart" val="chest" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="870" />
+		<set name="material" val="CLOTH" />
+		<set name="weight" val="2300" />
+		<set name="price" val="17400000" />
+		<for>
+			<baseadd stat="pDef" val="166" />
+			<baseadd stat="maxMp" val="866" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+		<item id="9227" type="Armor" name="Titanium Pants">
+		<set name="icon" val="icon.armor_t1006_l_i00" />
+		<set name="default_action" val="equip" />
+		<set name="armor_type" val="MAGIC" />
+		<set name="bodypart" val="legs" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="448" />
+		<set name="material" val="SCALE_OF_DRAGON" />
+		<set name="weight" val="3260" />
+		<set name="price" val="8960000" />
+		<for>
+			<baseadd stat="pDef" val="128" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9228" type="Armor" name="Titanium Gloves">
+		<set name="icon" val="icon.armor_t1006_g_i00" />
+	    <set name="default_action" val="equip" />
+		<set name="bodypart" val="gloves" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="540" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+	<item id="9229" type="Armor" name="Titanium Boots Robe">
+		<set name="icon" val="icon.armor_t1006_b_i00" />
+	    <set name="default_action" val="equip" />
+		<set name="bodypart" val="feet" />
+		<set name="crystal_type" val="S" />
+		<set name="crystal_count" val="179" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="1110" />
+		<set name="price" val="3580000" />
+		<for>
+			<baseadd stat="pDef" val="55" />
+			<enchant stat="pDef" val="0" />
+		</for>
+	</item>
+
+</list>

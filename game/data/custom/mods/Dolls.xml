@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dolls>
+    <Doll Id="14447" SkillId="24000" SkillLvl="1"/>
+	<Doll Id="14448" SkillId="24000" SkillLvl="2"/>
+	<Doll Id="14449" SkillId="24000" SkillLvl="3"/>
+	<Doll Id="14450" SkillId="24000" SkillLvl="4"/>
+	<Doll Id="14451" SkillId="24000" SkillLvl="5"/>
+	<Doll Id="14452" SkillId="24001" SkillLvl="1"/>
+	<Doll Id="14453" SkillId="24001" SkillLvl="2"/>
+	<Doll Id="14454" SkillId="24001" SkillLvl="3"/>
+	<Doll Id="14455" SkillId="24001" SkillLvl="4"/>
+	<Doll Id="14456" SkillId="24001" SkillLvl="5"/>
+	<Doll Id="14457" SkillId="24002" SkillLvl="1"/>
+	<Doll Id="14458" SkillId="24002" SkillLvl="2"/>
+	<Doll Id="14459" SkillId="24002" SkillLvl="3"/>
+	<Doll Id="14460" SkillId="24002" SkillLvl="4"/>
+	<Doll Id="14461" SkillId="24002" SkillLvl="5"/>
+	<Doll Id="14462" SkillId="24003" SkillLvl="1"/>
+	<Doll Id="14463" SkillId="24003" SkillLvl="2"/>
+	<Doll Id="14464" SkillId="24003" SkillLvl="3"/>
+	<Doll Id="14465" SkillId="24003" SkillLvl="4"/>
+	<Doll Id="14466" SkillId="24003" SkillLvl="5"/>
+	<Doll Id="14467" SkillId="24004" SkillLvl="1"/>
+	<Doll Id="14468" SkillId="24004" SkillLvl="2"/>
+	<Doll Id="14469" SkillId="24004" SkillLvl="3"/>
+	<Doll Id="14470" SkillId="24004" SkillLvl="4"/>
+	<Doll Id="14471" SkillId="24004" SkillLvl="5"/>
+	<Doll Id="14472" SkillId="24005" SkillLvl="1"/>
+	<Doll Id="14473" SkillId="24005" SkillLvl="2"/>
+	<Doll Id="14474" SkillId="24005" SkillLvl="3"/>
+	<Doll Id="14475" SkillId="24005" SkillLvl="4"/>
+	<Doll Id="14476" SkillId="24005" SkillLvl="5"/>
+	<Doll Id="14477" SkillId="24006" SkillLvl="1"/>
+	<Doll Id="14478" SkillId="24006" SkillLvl="2"/>
+	<Doll Id="14479" SkillId="24006" SkillLvl="3"/>
+    <Doll Id="14480" SkillId="24006" SkillLvl="4"/>
+	<Doll Id="14481" SkillId="24006" SkillLvl="5"/>
+	<Doll Id="14482" SkillId="24007" SkillLvl="1"/>
+	<Doll Id="14483" SkillId="24007" SkillLvl="2"/>
+	<Doll Id="14484" SkillId="24007" SkillLvl="3"/>
+    <Doll Id="14485" SkillId="24007" SkillLvl="4"/>
+	<Doll Id="14486" SkillId="24007" SkillLvl="5"/>
+</Dolls>
+

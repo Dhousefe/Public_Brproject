@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+		<skill id="5300" levels="1" name="Titanium Robe Armor Set" >
+		<set name="magicLvl" val="75"/>
+		<set name="target" val="SELF"/>
+		<set name="skillType" val="BUFF"/>
+		<set name="operateType" val="PASSIVE"/>
+		<for>
+		
+		<mul stat="mAtk" val="1.0"/>
+		<mul stat="mAtkSpd" val="1.2"/>
+		<add stat="runSpd" val="7"/>
+		<sub stat="cancel" val="50"/>
+		<addMul stat="stunVuln" val="20" />
+		<add stat="weightLimit" val="5759"/>
+		<add stat="maxMp" val="1950"/>
+		<add stat="maxHp" val="3800"/>
+		<add stat="maxCp" val="2000"/>
+		<add stat="WIT" val="2"/>
+		<add stat="INT" val="1"/>
+		<sub stat="MEN" val="2"/>
+		
+		</for>
+	</skill>
+	<skill id="5302" levels="1" name="Titanium Light Armor Set" >
+		<set name="magicLvl" val="75"/>
+		<set name="target" val="SELF"/>
+		<set name="skillType" val="BUFF"/>
+		<set name="operateType" val="PASSIVE"/>
+		<for>
+			<mul stat="pAtkSpd" val="1.00"/>
+			<mul stat="pAtk" val="1.00"/>
+			<add stat="maxMp" val="259"/>
+			<add stat="maxHp" val="4500"/>
+			<add stat="maxCp" val="2000"/>
+			<add stat="weightLimit" val="5759"/>
+			<add stat="DEX" val="1"/>
+			<add stat="STR" val="1"/>
+			<sub stat="CON" val="2"/>
+		</for>
+	</skill>
+	<skill id="5303" levels="1" name="Titanium Heavy Armor Set" >
+		<set name="magicLvl" val="75"/>
+		<set name="target" val="SELF"/>
+		<set name="skillType" val="BUFF"/>
+		<set name="operateType" val="PASSIVE"/>
+		<for>
+			<mul stat="pAtkSpd" val="0.5"/>
+			<mul stat="pDef" val="1.4"/>
+			<add stat="weightLimit" val="5759"/>
+			<add stat="maxHp" val="7000"/>
+			<add stat="maxCp" val="2000"/>
+			<addMul stat="sleepVuln" val="25" />
+			<addMul stat="rootVuln" val="50" />
+			<add stat="STR" val="2"/>
+			<sub stat="DEX" val="2"/>
+		</for>
+	</skill>
+</list>

@@ -181,6 +181,7 @@ import ext.mods.sellBuffEngine.BuffShopConfigs
 import ext.mods.sellBuffEngine.BuffShopManager
 import ext.mods.summonmobitem.SummonMobItemData
 import ext.mods.tour.TourData
+import ext.mods.dolls.DollsData
 import ext.mods.Crypta.BattleBossData
 import ext.mods.Crypta.AgathionData
 import ext.mods.Crypta.RandomManager
@@ -305,6 +306,7 @@ class GameServer : Runnable {
             RouletteData.getInstance()
             PlayerGodData.getInstance()
             DressMeData.getInstance()
+            DollsData.getInstance()
             TourData.getInstance()
             ext.mods.levelupmaker.LevelUpMakerManager.getInstance().init()
             EmailDeliveryTask.getInstance().loadAllPending()

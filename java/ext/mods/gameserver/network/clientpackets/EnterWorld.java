@@ -58,6 +58,7 @@ import ext.mods.gameserver.model.entity.events.capturetheflag.CTFManager;
 import ext.mods.gameserver.model.entity.events.deathmatch.DMEvent;
 import ext.mods.gameserver.model.entity.events.deathmatch.DMManager;
 import ext.mods.gameserver.model.entity.events.lastman.LMEvent;
+import ext.mods.dolls.DollsData;
 import ext.mods.gameserver.model.entity.events.lastman.LMManager;
 import ext.mods.gameserver.model.entity.events.teamvsteam.TvTEvent;
 import ext.mods.gameserver.model.entity.events.teamvsteam.TvTManager;
@@ -319,6 +320,8 @@ public class EnterWorld extends L2GameClientPacket
 		player.getQuestList().getQuests(Quest::isTriggeredOnEnterWorld).forEach(q -> q.onEnterWorld(player));
 		
 		player.getInventory().updateWeight();
+		
+		DollsData.getInstance().refreshAllDollSkills(player);
 		
 		player.sendPacket(new QuestList(player));
 		player.sendPacket(new SkillList(player));

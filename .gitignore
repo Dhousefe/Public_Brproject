@@ -10,6 +10,12 @@
 *.md
 .project
 
+# Pastas de Cache e Logs geradas pelo servidor
+game/cache/
+login/cache/
+game/log/
+login/log/
+
 # Log file
 *.log
 

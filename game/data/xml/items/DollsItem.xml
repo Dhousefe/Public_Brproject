@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <item id="14447" type="EtcItem" name="Queen Ant Doll Lv. 1">
+    <set name="icon" val="dolls.quentdoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24000-5"/>
+    </item>
+    <item id="14448" type="EtcItem" name="Queen Ant Doll Lv. 2">
+    <set name="icon" val="dolls.quentdoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24000-5"/>
+    </item>
+    <item id="14449" type="EtcItem" name="Queen Ant Doll Lv. 3">
+    <set name="icon" val="dolls.quentdoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24000-5"/>
+    </item>
+    <item id="14450" type="EtcItem" name="Queen Ant Doll Lv. 4">
+    <set name="icon" val="dolls.quentdoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24000-5"/>
+    </item>
+    <item id="14451" type="EtcItem" name="Queen Ant Doll Lv. 5">
+    <set name="icon" val="dolls.quentdoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24000-5"/>
+    </item>
+
+    <item id="14452" type="EtcItem" name="Orfen Doll Lv. 1">
+    <set name="icon" val="dolls.orfendoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24001-1"/>
+    </item>
+    <item id="14453" type="EtcItem" name="Orfen Doll Lv. 2">
+    <set name="icon" val="dolls.orfendoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24001-2"/>
+    </item>
+    <item id="14454" type="EtcItem" name="Orfen Doll Lv. 3">
+    <set name="icon" val="dolls.orfendoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24001-3"/>
+    </item>
+    <item id="14455" type="EtcItem" name="Orfen Doll Lv. 4">
+    <set name="icon" val="dolls.orfendoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24001-4"/>
+    </item>
+    <item id="14456" type="EtcItem" name="Orfen Doll Lv. 5">
+    <set name="icon" val="dolls.orfendoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24001-5"/>
+    </item>
+
+    <item id="14457" type="EtcItem" name="Baium Doll Lv. 1">
+    <set name="icon" val="dolls.baiumdoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24002-1"/>
+    </item>
+    <item id="14458" type="EtcItem" name="Baium Doll Lv. 2">
+    <set name="icon" val="dolls.baiumdoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24002-2"/>
+    </item>
+    <item id="14459" type="EtcItem" name="Baium Doll Lv. 3">
+    <set name="icon" val="dolls.baiumdoll13"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24002-3"/>
+    </item>
+    <item id="14460" type="EtcItem" name="Baium Doll Lv. 4">
+    <set name="icon" val="dolls.baiumdoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24002-4"/>
+    </item>
+    <item id="14461" type="EtcItem" name="Baium Doll Lv. 5">
+    <set name="icon" val="dolls.baiumdoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24002-5"/>
+    </item>
+
+    <item id="14462" type="EtcItem" name="Core Doll Lv. 1">
+    <set name="icon" val="dolls.coredoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24003-1"/>
+    </item>
+    <item id="14463" type="EtcItem" name="Core Doll Lv. 2">
+    <set name="icon" val="dolls.coredoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="icon" val="Icon-v3.armor_t95_u_i01"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24003-2"/>
+    </item>
+    <item id="14464" type="EtcItem" name="Core Doll Lv. 3">
+    <set name="icon" val="dolls.coredoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24003-3"/>
+    </item>
+    <item id="14465" type="EtcItem" name="Core Doll Lv. 4">
+    <set name="icon" val="dolls.coredoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24003-4"/>
+    </item>
+    <item id="14466" type="EtcItem" name="Core Doll Lv. 5">
+    <set name="icon" val="dolls.coredoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24003-5"/>
+    </item>
+
+    <item id="14467" type="EtcItem" name="Zaken Doll Lv. 1">
+     <set name="icon" val="dolls.zakendoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24004-1"/>
+    </item>
+    <item id="14468" type="EtcItem" name="Zaken Doll Lv. 2">
+     <set name="icon" val="dolls.zakendoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24004-2"/>
+    </item>
+    <item id="14469" type="EtcItem" name="Zaken Doll Lv. 3">
+     <set name="icon" val="dolls.zakendoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24004-3"/>
+    </item>
+    <item id="14470" type="EtcItem" name="Zaken Doll Lv. 4">
+     <set name="icon" val="dolls.zakendoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24004-4"/>
+    </item>
+    <item id="14471" type="EtcItem" name="Zaken Doll Lv. 5">
+     <set name="icon" val="dolls.zakendoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24004-5"/>
+    </item>
+
+    <item id="14472" type="EtcItem" name="Frintezza Doll Lv. 1">
+     <set name="icon" val="dolls.tezzadoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24005-1"/>
+    </item>
+    <item id="14473" type="EtcItem" name="Frintezza Doll Lv. 2">
+     <set name="icon" val="dolls.tezzadoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24005-2"/>
+    </item>
+    <item id="14474" type="EtcItem" name="Frintezza Doll Lv. 3">
+     <set name="icon" val="dolls.tezzadoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24005-3"/>
+    </item>
+    <item id="14475" type="EtcItem" name="Frintezza Doll Lv. 4">
+     <set name="icon" val="dolls.tezzadoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24005-4"/>
+    </item>
+    <item id="14476" type="EtcItem" name="Frintezza Doll Lv. 5">
+     <set name="icon" val="dolls.tezzadoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24005-5"/>
+    </item>
+
+    <item id="14477" type="EtcItem" name="Antharas Doll Lv. 1">
+     <set name="icon" val="dolls.antharasdoll1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24006-1"/>
+    </item>
+    <item id="14478" type="EtcItem" name="Antharas Doll Lv. 2">
+    <set name="icon" val="dolls.antharasdoll2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24006-2"/>
+    </item>
+    <item id="14479" type="EtcItem" name="Antharas Doll Lv. 3">
+    <set name="icon" val="dolls.antharasdoll3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24006-3"/>
+    </item>
+    <item id="14480" type="EtcItem" name="Antharas Doll Lv. 4">
+    <set name="icon" val="dolls.antharasdoll4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24006-4"/>
+    </item>
+    <item id="14481" type="EtcItem" name="Antharas Doll Lv. 5">
+    <set name="icon" val="dolls.antharasdoll5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24006-5"/>
+    </item>
+
+    <item id="14482" type="EtcItem" name="Valakas Doll Lv. 1">
+    <set name="icon" val="dolls.valakas1"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24007-1"/>
+    </item>
+    <item id="14483" type="EtcItem" name="Valakas Doll Lv. 2">
+    <set name="icon" val="dolls.valakas2"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24007-2"/>
+    </item>
+    <item id="14484" type="EtcItem" name="Valakas Doll Lv. 3">
+    <set name="icon" val="dolls.valakas3"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24007-3"/>
+    </item>
+    <item id="14485" type="EtcItem" name="Valakas Doll Lv. 4">
+    <set name="icon" val="dolls.valakas4"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24007-4"/>
+    </item>
+    <item id="14486" type="EtcItem" name="Valakas Doll Lv. 5">
+    <set name="icon" val="dolls.valakas5"/>
+        <set name="material" val="STEEL"/>
+        <set name="is_destroyable" val="true"/>
+        <set name="is_dropable" val="true"/>
+        <set name="is_sellable" val="true"/>
+        <set name="is_depositable" val="false"/>
+        <set name="is_stackable" val="false"/>
+        <set name="item_skill" val="24007-5"/>
+    </item>
+</list>
+
